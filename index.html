@@ -99,7 +99,7 @@
       //  formDataObj.notes = myFormData.getAll('notes');
         const formDataJsonString = JSON.stringify(formDataObj)
         console.log(formDataJsonString);
-        fetch("https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec", { method: "POST", redirect: "follow", headers: {
+        fetch("https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec", { method: "POST", mode: 'no-cors', redirect: "follow", headers: {
             'Content-Type': 'application/json'
           }, body: formDataJsonString })
         .then((res) => {
