@@ -131,6 +131,10 @@
             valueInputOption: 'RAW',
             insertDataOption: 'INSERT_ROWS',
         };
+        const valueRangeBody = {
+            'majorDimension': ROWS,
+            'values': [formDataJsonString]
+        }
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
         formDataObj['source-names'] = myFormData.getAll('source-names');
@@ -140,7 +144,7 @@
       //  formDataObj.notes = myFormData.getAll('notes');
         const formDataJsonString = JSON.stringify(formDataObj)
         console.log(formDataJsonString);
-        let request = gapi.client.sheets.spreadsheets.values.append(params, formDataJsonString);
+        let request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
         request.then(function (response ) {
             console.log(response.result)
         }, function (reason) {
