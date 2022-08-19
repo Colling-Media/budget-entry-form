@@ -67,10 +67,15 @@
    </form>
    
    <script>
-   const SPREADSHEET_ID = '1cy-ZmqAC0c10zyulXH4jjP9W6j0fUCyYPB586GNAqj8';
-   const CLIENT_ID = '1095180384716-am3k6rpppb483ippekemabu212ci00eb.apps.googleusercontent.com';
-   const API_KEY = 'AIzaSyCBiCwIBdss9F7-qJwsxqummCBMkMKuuFI';
-   const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
+   var SPREADSHEET_ID = '1cy-ZmqAC0c10zyulXH4jjP9W6j0fUCyYPB586GNAqj8';
+   var CLIENT_ID = '1095180384716-am3k6rpppb483ippekemabu212ci00eb.apps.googleusercontent.com';
+   var API_KEY = 'AIzaSyCBiCwIBdss9F7-qJwsxqummCBMkMKuuFI';
+
+   var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/admin/directory_v1/rest"];
+
+   // Authorization scopes required by the API; multiple scopes can be
+   // included, separated by spaces.
+   var SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://www.googleapis.com/auth/gmail.settings.basic https://www.googleapis.com/auth/gmail.settings.sharing https://www.googleapis.com/auth/admin.directory.group https://www.googleapis.com/auth/admin.directory.user https://mail.google.com/ https://www.googleapis.com/auth/gmail.insert';
 
 
    let CountButtonClicks = 0;
