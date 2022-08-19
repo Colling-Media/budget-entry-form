@@ -71,7 +71,7 @@
    var CLIENT_ID = '1095180384716-am3k6rpppb483ippekemabu212ci00eb.apps.googleusercontent.com';
    var API_KEY = 'AIzaSyCBiCwIBdss9F7-qJwsxqummCBMkMKuuFI';
 
-   var DISCOVERY_DOCS = ["https://www.googleapis.com/discovery/v1/apis/admin/directory_v1/rest"];
+   var DISCOVERY_DOCS = ['https://sheets.googleapis.com/$discovery/rest?version=v4'];
 
    // Authorization scopes required by the API; multiple scopes can be
    // included, separated by spaces.
@@ -106,7 +106,7 @@
           apiKey: API_KEY,
           clientId: CLIENT_ID,
           discoveryDocs: DISCOVERY_DOCS,
-          scope: SCOPE,
+          scope: SCOPES
        }).then(function () {
   //        // Listen for sign-in state changes.
       gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
