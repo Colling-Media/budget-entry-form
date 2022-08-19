@@ -110,7 +110,7 @@
        }).then(function () {
   //        // Listen for sign-in state changes.
       gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-      this.updateSignInStatus(gapi.auth2.getAuthInstance().signedIn.get());
+      updateSignInStatus(gapi.auth2.getAuthInstance().signedIn.get());
        });
      }
    
