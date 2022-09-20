@@ -202,13 +202,31 @@
             'values': [formDataJsonString]
         }
         console.log(formDataJsonString);
-        var request = gapi.client.sheets.spreadsheets.values.append(params, formDataJsonString);
-        request.then(function(response) {
+        const request = {
+          spreadsheetId: SPREADSHEET_ID,
+          range: 'Sheet2',
+          valueInputOption: 'USER_ENTERED',
+          insertDataOption: 'INSERT_ROWS',
+          resource: {
+              "majorDimension": "ROWS",
+              "values": formDataJsonString
+          },
+          auth: oAuth2Client,
+      };
+      
+      try {
+          const response = (await sheets.spreadsheets.values.append(request)).data;
+          console.log(JSON.stringify(response, null, 2));
+      } catch (err) {
+          console.error(err);
+      }
+        //var request = gapi.client.sheets.spreadsheets.values.append(params, formDataJsonString);
+       // request.then(function(response) {
           // TODO: Change code below to process the `response` object:
-          console.log(response.result);
-        }, function(reason) {
-          console.error('error: ' + reason.result.error.message);
-        });
+      //    console.log(response.result);
+      //  }, function(reason) {
+      //    console.error('error: ' + reason.result.error.message);
+      //  });
       //  let request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
       //  request.then(function (response ) {
      //       console.log(response.result)
