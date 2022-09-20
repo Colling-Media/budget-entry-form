@@ -1,16 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Sheets API Quickstart</title>
+    <meta charset="utf-8" />
+  </head>
+  <body>
+    <p>Sheets API Quickstart</p>
 
-  <!DOCTYPE html>
-  <html>
-    <head>
-      <title>Budget Entry Form</title>
-      <meta charset="utf-8" />
-    </head>
-    <body>  
-        
     <!--Add buttons to initiate auth sequence and sign out-->
-   <button id="authorize_button" style="display: none;">Authorize</button>
-   <button id="signout_button" style="display: none;">Sign Out</button>
-    
+    <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+    <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>\
+
     <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
         <div class="form-line">
         <!-- <div class="input-entry">
@@ -31,145 +31,160 @@
         </div>
         </div> -->
         <div class="form-line" id="repeat-row0">
-        <div class="repeat-format" id="repeat0">
-            <div class="input-entry">
-                <label for="source-names">Source</label>
-                <select name="source-names" id="source-names" required="">
-                    <option value="Google">Google</option>
-                    <option value="Facebook">Facebook</option>
-                    <option value="Tradedesk">Tradedesk</option>
-                    <option value="Linkedin">Linkedin</option>
-                </select>
+            <div class="repeat-format" id="repeat0">
+                <div class="input-entry">
+                    <label for="source-names">Source</label>
+                    <select name="source-names" id="source-names" required="">
+                        <option value="Google">Google</option>
+                        <option value="Facebook">Facebook</option>
+                        <option value="Tradedesk">Tradedesk</option>
+                        <option value="Linkedin">Linkedin</option>
+                    </select>
+                </div>
+                <div class="input-entry">
+                    <label for="media-type">Media type</label>
+                    <select name="media-type" id="media-type" required="">
+                        <option value="video ads">video ads</option>
+                        <option value="search ads">search ads</option>
+                        <option value="seo">seo</option>
+                        <option value="display ads">display ads</option>
+                    </select>
+                </div>
+                <div class="input-entry">
+                <label class="form-label" for="campaign">Campaign</label>
+                <input type="text" id="campaign" name="campaign" value="">
+            </div>
+            <!-- <div class="input-entry">
+                <label class="form-label" for="budget">Budget</label>
+                <input type="number" id="budget" name="budget" value="" required="">
             </div>
             <div class="input-entry">
-                <label for="media-type">Media type</label>
-                <select name="media-type" id="media-type" required="">
-                    <option value="video ads">video ads</option>
-                    <option value="search ads">search ads</option>
-                    <option value="seo">seo</option>
-                    <option value="display ads">display ads</option>
-                </select>
+                <label class="form-label" for="notes">Notes</label>
+                <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
             </div>
-            <div class="input-entry">
-            <label class="form-label" for="campaign">Campaign</label>
-            <input type="text" id="campaign" name="campaign" value="">
-        </div>
-        <!-- <div class="input-entry">
-            <label class="form-label" for="budget">Budget</label>
-            <input type="number" id="budget" name="budget" value="" required="">
-        </div>
-        <div class="input-entry">
-            <label class="form-label" for="notes">Notes</label>
-            <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
-        </div>
-        <button type="button" class="remove-row" id="0" onclick="removeFunction(event)">x</button>
-        </div>
-        </div> -->
-    <button type="button" class="add-row" id="demo-row">Add Row</button>
-    <br>
-    <button type="button" onclick="onSubmission(event)">Submit</button>
+            <button type="button" class="remove-row" id="0" onclick="removeFunction(event)">x</button>
+            </div>
+            </div> -->
+        <button type="button" class="add-row" id="demo-row">Add Row</button>
+        <br>
+        <button type="button" onclick="onSubmission(event)">Submit</button>
+    </div>
    </form>
 
-   <script>
-   var SPREADSHEET_ID = '1cy-ZmqAC0c10zyulXH4jjP9W6j0fUCyYPB586GNAqj8';
-   var CLIENT_ID = '1095180384716-am3k6rpppb483ippekemabu212ci00eb.apps.googleusercontent.com';
-   var API_KEY = 'AIzaSyCBiCwIBdss9F7-qJwsxqummCBMkMKuuFI';
+    <pre id="content" style="white-space: pre-wrap;"></pre>
 
-   var DISCOVERY_DOCS = ['https://sheets.googleapis.com/$discovery/rest?version=v4'];
+    <script type="text/javascript">
+      /* exported gapiLoaded */
+      /* exported gisLoaded */
+      /* exported handleAuthClick */
+      /* exported handleSignoutClick */
 
-   // Authorization scopes required by the API; multiple scopes can be
-   // included, separated by spaces.
-   var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+      // TODO(developer): Set to client ID and API key from the Developer Console
+      const CLIENT_ID = '1095180384716-am3k6rpppb483ippekemabu212ci00eb.apps.googleusercontent.com';
+      const API_KEY = 'AIzaSyCBiCwIBdss9F7-qJwsxqummCBMkMKuuFI';
 
+      // Discovery doc URL for APIs used by the quickstart
+      const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
-   var authorizeButton = document.getElementById('authorize_button');
-   var signoutButton = document.getElementById('signout_button');
+      // Authorization scopes required by the API; multiple scopes can be
+      // included, separated by spaces.
+      const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
 
-   /**
-    * On load, called to load the auth2 library and API client library.
-    */
-   function handleClientLoad() {
-     gapi.load('client:auth2', initClient);
-   }
+      let tokenClient;
+      let gapiInited = false;
+      let gisInited = false;
 
-   /**
-    *  Initializes the API client library and sets up sign-in state
-    *  listeners.
-    */
-   function initClient() {
-     gapi.client.init({
-       apiKey: API_KEY,
-       clientId: CLIENT_ID,
-       discoveryDocs: DISCOVERY_DOCS,
-       scope: SCOPE
-    }).then(function () {
-//        // Listen for sign-in state changes.
-   gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
-       // Handle the initial sign-in state.
-      updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
-       authorizeButton.onclick = handleAuthClick;
-       signoutButton.onclick = handleSignoutClick;
-     }, function(error) {
-       console.log(JSON.stringify(error, null, 2));
-    });
-  }
+      document.getElementById('authorize_button').style.visibility = 'hidden';
+      document.getElementById('signout_button').style.visibility = 'hidden';
 
-   /**
-    *  Called when the signed in status changes, to update the UI
-    *  appropriately. After a sign-in, the API is called.
-    */
-   function updateSigninStatus(isSignedIn) {
-     if (isSignedIn) {
-       authorizeButton.style.display = 'none';
-       signoutButton.style.display = 'block';
-     } else {
-       authorizeButton.style.display = 'block';
-       signoutButton.style.display = 'none';
-     }
-   }
+      /**
+       * Callback after api.js is loaded.
+       */
+      function gapiLoaded() {
+        gapi.load('client', intializeGapiClient);
+      }
 
-   /**
-    *  Sign in the user upon button click.
-    */
-   function handleAuthClick(event) {
-     gapi.auth2.getAuthInstance().signIn();
-   }
+      /**
+       * Callback after the API client is loaded. Loads the
+       * discovery doc to initialize the API.
+       */
+      async function intializeGapiClient() {
+        await gapi.client.init({
+          apiKey: API_KEY,
+          discoveryDocs: [DISCOVERY_DOC],
+        });
+        gapiInited = true;
+        maybeEnableButtons();
+      }
 
-   /**
-    *  Sign out the user upon button click.
-    */
-   function handleSignoutClick(event) {
-     gapi.auth2.getAuthInstance().signOut();
-   }
+      /**
+       * Callback after Google Identity Services are loaded.
+       */
+      function gisLoaded() {
+        tokenClient = google.accounts.oauth2.initTokenClient({
+          client_id: CLIENT_ID,
+          scope: SCOPES,
+          callback: '', // defined later
+        });
+        gisInited = true;
+        maybeEnableButtons();
+      }
 
-   let CountButtonClicks = 0;
-   
-   document.getElementById("demo-row").onclick = function() {myFunction()};
-   
-   function myFunction() {
-     CountButtonClicks += 1;
-     let repeatNumber = CountButtonClicks - 1;
-   console.log(repeatNumber);
-       document.getElementById("repeat-row" + repeatNumber).insertAdjacentHTML('afterend',
-       '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="source-names">Source</label><select name="source-names" id="source-names" required="required"><option value="Google">Google</option><option value="Facebook">Facebook</option><option value="Tradedesk">Tradedesk</option><option value="Linkedin">Linkedin</option></select></div><div class="input-entry"><label for="media-type">Media type</label><select name="media-type" id="media-type" required=""><option value="video ads">video ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="display ads">display ads</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row" id=' + CountButtonClicks + ' onclick="removeFunction(event)">x</button></div></div></div>');
-   }
-   
-   function removeFunction(event) {
-      console.log(event.target.id);
-      let removeDiv = "repeat-row" + event.target.id;s
-      let removeElement = document.getElementById(removeDiv);
-      removeElement.remove();
-   }
-   
-   async function onSubmission(event) {
+      /**
+       * Enables user interaction after all libraries are loaded.
+       */
+      function maybeEnableButtons() {
+        if (gapiInited && gisInited) {
+          document.getElementById('authorize_button').style.visibility = 'visible';
+        }
+      }
+
+      /**
+       *  Sign in the user upon button click.
+       */
+      function handleAuthClick() {
+        tokenClient.callback = async (resp) => {
+          if (resp.error !== undefined) {
+            throw (resp);
+          }
+          document.getElementById('signout_button').style.visibility = 'visible';
+          document.getElementById('authorize_button').innerText = 'Refresh';
+          await listMajors();
+        };
+
+        if (gapi.client.getToken() === null) {
+          // Prompt the user to select a Google Account and ask for consent to share their data
+          // when establishing a new session.
+          tokenClient.requestAccessToken({prompt: 'consent'});
+        } else {
+          // Skip display of account chooser and consent dialog for an existing session.
+          tokenClient.requestAccessToken({prompt: ''});
+        }
+      }
+
+      /**
+       *  Sign out the user upon button click.
+       */
+      function handleSignoutClick() {
+        const token = gapi.client.getToken();
+        if (token !== null) {
+          google.accounts.oauth2.revoke(token.access_token);
+          gapi.client.setToken('');
+          document.getElementById('content').innerText = '';
+          document.getElementById('authorize_button').innerText = 'Authorize';
+          document.getElementById('signout_button').style.visibility = 'hidden';
+        }
+      }
+
+      async function onSubmission(event) {
         let formElement = document.getElementById("theForm");
         const url = theForm.action;
         console.log(formElement);
         const params = {
             spreadsheetId: SPREADSHEET_ID,
             range: 'Sheet2',
-            valueInputOption: 'RAW',
-            insertDataOption: 'INSERT_ROWS',
+           // valueInputOption: 'RAW',
+           // insertDataOption: 'INSERT_ROWS',
         };
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
@@ -184,12 +199,19 @@
             'values': [formDataJsonString]
         }
         console.log(formDataJsonString);
-        let request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
-        request.then(function (response ) {
-            console.log(response.result)
-        }, function (reason) {
-            console.error('error:' + reason.result.error.message);
-        })
+        var request = gapi.client.sheets.spreadsheets.values.append(params, formDataJsonString);
+        request.then(function(response) {
+          // TODO: Change code below to process the `response` object:
+          console.log(response.result);
+        }, function(reason) {
+          console.error('error: ' + reason.result.error.message);
+        });
+      //  let request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+      //  request.then(function (response ) {
+     //       console.log(response.result)
+     //   }, function (reason) {
+     //       console.error('error:' + reason.result.error.message);
+     //   })
        // fetch("https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335", { method: "POST", mode: 'no-cors', redirect: "follow", headers: {
        //     'Content-Type': 'application/json'
        //   }, body: formDataJsonString })
@@ -199,25 +221,36 @@
       //  })
        // .then((res) => console.log(res));
     }
-    
-     //   return fetch("https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335", {
-     //       method: 'POST',
-     //       mode: 'no-cors',
-      //      headers: {
-      //        'Access-Control-Allow-Origin': '*',
-       //     },
-       //     body: formDataJsonString, 
-      //  })
-      //  const string = await response.text();
-      //  const json = string === "" ? {} : JSON.parse(string);
-       // console.log(json);
-       // return json;
- //  }
-   
-   </script>
-   <script async defer src="https://apis.google.com/js/api.js"
-   onload="this.onload=function(){};handleClientLoad()"
-   onreadystatechange="if (this.readyState === 'complete') this.onload()">
- </script>
-</body>
+
+      /**
+       * Print the names and majors of students in a sample spreadsheet:
+       * https://docs.google.com/spreadsheets/d/1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms/edit
+       */
+      async function listMajors() {
+        let response;
+        try {
+          // Fetch first 10 files
+          response = await gapi.client.sheets.spreadsheets.values.get({
+            spreadsheetId: '1BxiMVs0XRA5nFMdKvBdBZjgmUUqptlbs74OgvE2upms',
+            range: 'Class Data!A2:E',
+          });
+        } catch (err) {
+          document.getElementById('content').innerText = err.message;
+          return;
+        }
+        const range = response.result;
+        if (!range || !range.values || range.values.length == 0) {
+          document.getElementById('content').innerText = 'No values found.';
+          return;
+        }
+        // Flatten to string to display
+        const output = range.values.reduce(
+            (str, row) => `${str}${row[0]}, ${row[4]}\n`,
+            'Name, Major:\n');
+        document.getElementById('content').innerText = output;
+      }
+    </script>
+    <script async defer src="https://apis.google.com/js/api.js" onload="gapiLoaded()"></script>
+    <script async defer src="https://accounts.google.com/gsi/client" onload="gisLoaded()"></script>
+  </body>
 </html>

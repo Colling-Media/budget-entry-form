@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+  <html>
+    <head>
+      <title>Budget Entry Form</title>
+      <meta charset="utf-8" />
+    </head>
+    <body>  
+    
+    <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
+        <div class="form-line">
+        <!-- <div class="input-entry">
+            <label class="form-label" for="email">Email</label>
+            <input type="email" id="email" name="email" value="" required="">
+        </div>
+        <div class="input-entry">
+            <label class="form-label" for="account">Account</label>
+            <input type="text" id="account" name="account" value="" required="">
+        </div>
+        <div class="input-entry">
+            <label class="form-label" for="start-date">Start date</label>
+            <input type="date" id="start-date" name="start-date" value="" required="">
+        </div>
+        <div class="input-entry">
+            <label class="form-label" for="end-date">End date</label>
+            <input type="date" id="end-date" name="end-date" value="" required="">
+        </div>
+        </div> -->
+        <div class="form-line" id="repeat-row0">
+        <div class="repeat-format" id="repeat0">
+            <div class="input-entry">
+                <label for="source-names">Source</label>
+                <select name="source-names" id="source-names" required="">
+                    <option value="Google">Google</option>
+                    <option value="Facebook">Facebook</option>
+                    <option value="Tradedesk">Tradedesk</option>
+                    <option value="Linkedin">Linkedin</option>
+                </select>
+            </div>
+            <div class="input-entry">
+                <label for="media-type">Media type</label>
+                <select name="media-type" id="media-type" required="">
+                    <option value="video ads">video ads</option>
+                    <option value="search ads">search ads</option>
+                    <option value="seo">seo</option>
+                    <option value="display ads">display ads</option>
+                </select>
+            </div>
+            <div class="input-entry">
+            <label class="form-label" for="campaign">Campaign</label>
+            <input type="text" id="campaign" name="campaign" value="">
+        </div>
+        <!-- <div class="input-entry">
+            <label class="form-label" for="budget">Budget</label>
+            <input type="number" id="budget" name="budget" value="" required="">
+        </div>
+        <div class="input-entry">
+            <label class="form-label" for="notes">Notes</label>
+            <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
+        </div>
+        <button type="button" class="remove-row" id="0" onclick="removeFunction(event)">x</button>
+        </div>
+        </div> -->
+    <button type="button" class="add-row" id="demo-row">Add Row</button>
+    <br>
+    <button type="button" onclick="onSubmission(event)">Submit</button>
+   </form>
+
+   <script>
+   var SPREADSHEET_ID = '1cy-ZmqAC0c10zyulXH4jjP9W6j0fUCyYPB586GNAqj8';
+   var CLIENT_ID = '1095180384716-am3k6rpppb483ippekemabu212ci00eb.apps.googleusercontent.com';
+   var CLIENT_SECRET = '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'
+   var API_KEY = 'AIzaSyCBiCwIBdss9F7-qJwsxqummCBMkMKuuFI';
+   var REDIRECT_URL = 'http://localhost';
+   var DISCOVERY_DOCS = ['https://sheets.googleapis.com/$discovery/rest?version=v4'];
+
+   // Authorization scopes required by the API; multiple scopes can be
+   // included, separated by spaces.
+   var SCOPE = 'https://www.googleapis.com/auth/spreadsheets';
+
+//  const oauth2Client = new google.auth.OAuth2(
+ //   CLIENT_ID,
+ //   CLIENT_SECRET,
+ //   REDIRECT_URL
+ // );
+
+
+  // Generate a url that asks permissions for the Drive activity scope
+// const authorizationUrl = oauth2Client.generateAuthUrl({
+  // 'online' (default) or 'offline' (gets refresh_token)
+ // access_type: 'offline',
+  /** Pass in the scopes array defined above.
+    * Alternatively, if only one scope is needed, you can pass a scope URL as a string */
+  //scope: scopes,
+  // Enable incremental authorization. Recommended as a best practice.
+ // include_granted_scopes: true
+// });
+
+
+   let CountButtonClicks = 0;
+   
+   document.getElementById("demo-row").onclick = function() {myFunction()};
+   
+   function myFunction() {
+     CountButtonClicks += 1;
+     let repeatNumber = CountButtonClicks - 1;
+   console.log(repeatNumber);
+       document.getElementById("repeat-row" + repeatNumber).insertAdjacentHTML('afterend',
+       '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="source-names">Source</label><select name="source-names" id="source-names" required="required"><option value="Google">Google</option><option value="Facebook">Facebook</option><option value="Tradedesk">Tradedesk</option><option value="Linkedin">Linkedin</option></select></div><div class="input-entry"><label for="media-type">Media type</label><select name="media-type" id="media-type" required=""><option value="video ads">video ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="display ads">display ads</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row" id=' + CountButtonClicks + ' onclick="removeFunction(event)">x</button></div></div></div>');
+   }
+
+         /**
+       * On load, called to load the auth2 library and API client library.
+       */
+       function handleClientLoad() {
+        gapi.load('client:auth2', initClient);
+      }
+
+      /**
+       *  Initializes the API client library and sets up sign-in state
+       *  listeners.
+       */
+      function initClient() {
+        gapi.client.init({
+          clientSecret: CLIENT_SECRET,
+          clientId: CLIENT_ID,
+          discoveryDocs: DISCOVERY_DOCS,
+          scope: SCOPE
+       }).then(function () {
+      // Listen for sign-in state changes.
+      GoogleAuth = gapi.auth2.getAuthInstance();
+      // Listen for sign-in state changes.
+      GoogleAuth.isSignedIn.listen(updateSigninStatus);
+      updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+       }, function(error) {
+        console.log(JSON.stringify(error, null, 2));
+     });
+    }
+
+   function removeFunction(event) {
+      console.log(event.target.id);
+      let removeDiv = "repeat-row" + event.target.id;
+      let removeElement = document.getElementById(removeDiv);
+      removeElement.remove();
+   }
+   
+   async function onSubmission(event) {
+        let formElement = document.getElementById("theForm");
+        const url = theForm.action;
+        console.log(formElement);
+        const params = {
+            spreadsheetId: SPREADSHEET_ID,
+            range: 'Sheet2',
+           // valueInputOption: 'RAW',
+           // insertDataOption: 'INSERT_ROWS',
+        };
+        const myFormData = new FormData(formElement);
+        const formDataObj = Object.fromEntries(myFormData.entries());
+        formDataObj['source-names'] = myFormData.getAll('source-names');
+        formDataObj['media-type'] = myFormData.getAll('media-type');
+      //  formDataObj.campaign = myFormData.getAll('campaign');
+      //  formDataObj.budget = myFormData.getAll('budget');
+      //  formDataObj.notes = myFormData.getAll('notes');
+        const formDataJsonString = JSON.stringify(formDataObj)
+        const valueRangeBody = {
+            'majorDimension': 'ROWS',
+            'values': [formDataJsonString]
+        }
+        console.log(formDataJsonString);
+        var request = gapi.client.sheets.spreadsheets.values.append(params, formDataJsonString);
+        request.then(function(response) {
+          // TODO: Change code below to process the `response` object:
+          console.log(response.result);
+        }, function(reason) {
+          console.error('error: ' + reason.result.error.message);
+        });
+      //  let request = gapi.client.sheets.spreadsheets.values.append(params, valueRangeBody);
+      //  request.then(function (response ) {
+     //       console.log(response.result)
+     //   }, function (reason) {
+     //       console.error('error:' + reason.result.error.message);
+     //   })
+       // fetch("https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335", { method: "POST", mode: 'no-cors', redirect: "follow", headers: {
+       //     'Content-Type': 'application/json'
+       //   }, body: formDataJsonString })
+       // .then((res) => {
+      //    console.log(res.json());
+         // return res.json();
+      //  })
+       // .then((res) => console.log(res));
+    }
+    
+     //   return fetch("https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335", {
+     //       method: 'POST',
+     //       mode: 'no-cors',
+      //      headers: {
+      //        'Access-Control-Allow-Origin': '*',
+       //     },
+       //     body: formDataJsonString, 
+      //  })
+      //  const string = await response.text();
+      //  const json = string === "" ? {} : JSON.parse(string);
+       // console.log(json);
+       // return json;
+ //  }
+   
+   </script>
+   <script async defer src="https://apis.google.com/js/api.js"
+   onload="this.onload=function(){};handleClientLoad()"
+   onreadystatechange="if (this.readyState === 'complete') this.onload()">
+ </script>
+</body>
+</html>
