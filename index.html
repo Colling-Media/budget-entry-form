@@ -90,7 +90,8 @@
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      const SCOPES = 'https://www.googleapis.com/auth/spreadsheets.readonly';
+      const SCOPES = 'https://www.googleapis.com/auth/spreadsheets';
+
 
       let tokenClient;
       let gapiInited = false;
@@ -151,7 +152,7 @@
           }
           document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
-          await listMajors();
+         // await listMajors();
         };
 
         if (gapi.client.getToken() === null) {
