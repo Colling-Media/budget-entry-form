@@ -215,7 +215,7 @@
       };
       
       try {
-          const response = (await sheets.spreadsheets.values.append(request)).data;
+          const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
           console.log(JSON.stringify(response, null, 2));
       } catch (err) {
           console.error(err);
