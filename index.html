@@ -196,6 +196,7 @@
       //  formDataObj.campaign = myFormData.getAll('campaign');
       //  formDataObj.budget = myFormData.getAll('budget');
       //  formDataObj.notes = myFormData.getAll('notes');
+        console.log("testing what is here", formDataObj);
         const formDataJsonString = JSON.stringify(formDataObj)
         const valueRangeBody = {
             'majorDimension': 'ROWS',
@@ -215,12 +216,12 @@
          // auth: tokenClient,
       };
       
-      try {
-          const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
-          console.log(JSON.stringify(response, null, 2));
-      } catch (err) {
-          console.error(err);
-      }
+     // try {
+    //      const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
+    //      console.log(JSON.stringify(response, null, 2));
+     // } catch (err) {
+      //    console.error(err);
+   //   }
         //var request = gapi.client.sheets.spreadsheets.values.append(params, formDataJsonString);
        // request.then(function(response) {
           // TODO: Change code below to process the `response` object:
