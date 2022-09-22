@@ -231,7 +231,7 @@
         }
         let monsterArray = [];
 
-        let entryNumber = formDataJsonString.sourceNames.length
+        let entryNumber = formDataObj.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
           monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i], formDataObj.notes[i]]);
