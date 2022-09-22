@@ -222,8 +222,10 @@
             'values': [formDataJsonString]
         }
         console.log(formDataJsonString);
-        console.log(formDataJsonString['sourceNames']);
-        console.log(formDataJsonString.sourceNames);
+        if (formatDataJsonString) {
+          console.log(formDataJsonString['sourceNames']);
+          console.log(formDataJsonString.sourceNames);
+        }
         let monsterArray = [];
 
         let entryNumber = formDataJsonString.sourceNames.length
