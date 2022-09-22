@@ -12,65 +12,64 @@
     <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
-    <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
+      <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
         <div class="form-line">
-        <!-- <div class="input-entry">
-            <label class="form-label" for="email">Email</label>
-            <input type="email" id="email" name="email" value="" required="">
+          <div class="input-entry">
+              <label class="form-label" for="email">Email</label>
+              <input type="email" id="email" name="email" value="" required="">
+          </div>
+          <div class="input-entry">
+              <label class="form-label" for="account">Account</label>
+              <input type="text" id="account" name="account" value="" required="">
+          </div>
+          <div class="input-entry">
+              <label class="form-label" for="start-date">Start date</label>
+              <input type="date" id="start-date" name="start-date" value="" required="">
+          </div>
+          <div class="input-entry">
+              <label class="form-label" for="end-date">End date</label>
+              <input type="date" id="end-date" name="end-date" value="" required="">
+          </div>
         </div>
-        <div class="input-entry">
-            <label class="form-label" for="account">Account</label>
-            <input type="text" id="account" name="account" value="" required="">
-        </div>
-        <div class="input-entry">
-            <label class="form-label" for="start-date">Start date</label>
-            <input type="date" id="start-date" name="start-date" value="" required="">
-        </div>
-        <div class="input-entry">
-            <label class="form-label" for="end-date">End date</label>
-            <input type="date" id="end-date" name="end-date" value="" required="">
-        </div>
-        </div> -->
         <div class="form-line" id="repeat-row0">
-            <div class="repeat-format" id="repeat0">
-                <div class="input-entry">
-                    <label for="source-names">Source</label>
-                    <select name="source-names" id="source-names" required="">
-                        <option value="Google">Google</option>
-                        <option value="Facebook">Facebook</option>
-                        <option value="Tradedesk">Tradedesk</option>
-                        <option value="Linkedin">Linkedin</option>
-                    </select>
-                </div>
-                <div class="input-entry">
-                    <label for="media-type">Media type</label>
-                    <select name="media-type" id="media-type" required="">
-                        <option value="video ads">video ads</option>
-                        <option value="search ads">search ads</option>
-                        <option value="seo">seo</option>
-                        <option value="display ads">display ads</option>
-                    </select>
-                </div>
-                <div class="input-entry">
-                <label class="form-label" for="campaign">Campaign</label>
-                <input type="text" id="campaign" name="campaign" value="">
-            </div>
-            <!-- <div class="input-entry">
-                <label class="form-label" for="budget">Budget</label>
-                <input type="number" id="budget" name="budget" value="" required="">
+          <div class="repeat-format" id="repeat0">
+            <div class="input-entry">
+                <label for="source-names">Source</label>
+                <select name="source-names" id="source-names" required="">
+                      <option value="Google">Google</option>
+                      <option value="Facebook">Facebook</option>
+                      <option value="Tradedesk">Tradedesk</option>
+                      <option value="Linkedin">Linkedin</option>
+                  </select>
             </div>
             <div class="input-entry">
-                <label class="form-label" for="notes">Notes</label>
-                <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
+                <label for="media-type">Media type</label>
+                <select name="media-type" id="media-type" required="">
+                      <option value="video ads">video ads</option>
+                      <option value="search ads">search ads</option>
+                      <option value="seo">seo</option>
+                      <option value="display ads">display ads</option>
+                  </select>
             </div>
-            <button type="button" class="remove-row" id="0" onclick="removeFunction(event)">x</button>
-            </div>
-            </div> -->
+            <div class="input-entry">
+              <label class="form-label" for="campaign">Campaign</label>
+              <input type="text" id="campaign" name="campaign" value="">
+          </div>
+          <div class="input-entry">
+              <label class="form-label" for="budget">Budget</label>
+              <input type="number" id="budget" name="budget" value="" required="">
+          </div>
+          <div class="input-entry">
+              <label class="form-label" for="notes">Notes</label>
+              <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
+          </div>
+          <button type="button" class="remove-row" id="0" onclick="removeFunction(event)">x</button>
+          </div>
+        </div>
         <button type="button" class="add-row" id="demo-row">Add Row</button>
         <br>
         <button type="button" onclick="onSubmission(event)">Submit</button>
-    </div>
-   </form>
+      </form>
 
     <pre id="content" style="white-space: pre-wrap;"></pre>
 
@@ -179,6 +178,26 @@
         }
       }
 
+      let CountButtonClicks = 0;
+
+      document.getElementById("demo-row").onclick = function() {myFunction()};
+
+      function myFunction() {
+        CountButtonClicks += 1;
+        let repeatNumber = CountButtonClicks - 1;
+        console.log(repeatNumber);
+          document.getElementById("repeat-row" + repeatNumber).insertAdjacentHTML('afterend',
+          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="source-names">Source</label><select name="source-names" id="source-names" required="required"><option value="Google">Google</option><option value="Facebook">Facebook</option><option value="Tradedesk">Tradedesk</option><option value="Linkedin">Linkedin</option></select></div><div class="input-entry"><label for="media-type">Media type</label><select name="media-type" id="media-type" required=""><option value="video ads">video ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="display ads">display ads</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row" id=' + CountButtonClicks + ' onclick="removeFunction(event)">x</button></div></div></div>');
+      }
+
+      function removeFunction(event) {
+        console.log(event.target.id);
+        let removeDiv = "repeat-row" + event.target.id;
+        let removeElement = document.getElementById(removeDiv);
+        removeElement.remove();
+      }
+
+
       async function onSubmission(event) {
         let formElement = document.getElementById("theForm");
         const url = theForm.action;
@@ -203,6 +222,15 @@
             'values': [formDataJsonString]
         }
         console.log(formDataJsonString);
+        let monsterArray = [];
+
+        let entryNumber = formDataJsonString.sourceNames.length
+
+        for (let i = 0; i < entryNumber; i++) {
+          monsterArray.push([formDataJsonString.email, formDataJsonString.account, formDataJsonString['start-date'], formDataJsonString['end-date'], formDataJsonString['source-names'][i], formDataJsonString['media-type'][i], formDataJsonString.campaign[i], formDataJsonString.budget[i], formDataJsonString.notes[i]])
+          console.log(i)
+        }
+
         const request = {
           spreadsheetId: SPREADSHEET_ID,
           range: 'Sheet1',
@@ -210,7 +238,7 @@
           insertDataOption: 'INSERT_ROWS',
           resource: {
               "majorDimension": "ROWS",
-              "values": formDataJsonString 
+              "values": [["Row 1 Col 1","Row 1 Col 2", "Row 1 Col 3", "Row 1 Col 4"], ["Row 2 Col 1","Row 2 Col 2"]]
               //[["Row 1 Col 1","Row 1 Col 2", "Row 1 Col 3", "Row 1 Col 4"], ["Row 2 Col 1","Row 2 Col 2"]]
           },
          // auth: tokenClient,
