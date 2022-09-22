@@ -225,7 +225,7 @@
         if (formDataJsonString) {
           console.log(formDataJsonString.email);
           console.log(formDataObj['sourceNames']);
-          console.log(formDataObj.sourceName);
+          console.log(formDataObj.sourceNames);
           console.log(formDataJsonString['sourceNames']);
           console.log(formDataJsonString.sourceNames);
         }
@@ -234,7 +234,7 @@
         let entryNumber = formDataJsonString.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
-          monsterArray.push([formDataJsonString.email, formDataJsonString.account, formDataJsonString.startDate, formDataJsonString.endDate, formDataJsonString.sourceNames[i], formDataJsonString.mediaType[i], formDataJsonString.campaign[i], formDataJsonString.budget[i], formDataJsonString.notes[i]])
+          monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i], formDataObj.notes[i]]);
           console.log(i)
         }
 
