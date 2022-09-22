@@ -212,9 +212,9 @@
         const formDataObj = Object.fromEntries(myFormData.entries());
         formDataObj['sourceNames'] = myFormData.getAll('sourceNames');
         formDataObj['mediaType'] = myFormData.getAll('mediaType');
-      //  formDataObj.campaign = myFormData.getAll('campaign');
-      //  formDataObj.budget = myFormData.getAll('budget');
-      //  formDataObj.notes = myFormData.getAll('notes');
+        formDataObj.campaign = myFormData.getAll('campaign');
+        formDataObj.budget = myFormData.getAll('budget');
+        formDataObj.notes = myFormData.getAll('notes');
         console.log("testing what is here", formDataObj);
         const formDataJsonString = JSON.stringify(formDataObj)
         const valueRangeBody = {
@@ -227,7 +227,7 @@
         let entryNumber = formDataObj.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
-          monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i], formDataObj.notes[i]]);
+          monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i
           console.log(i)
         }
 
