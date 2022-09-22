@@ -221,14 +221,7 @@
             'majorDimension': 'ROWS',
             'values': [formDataJsonString]
         }
-       // console.log(formDataJsonString);
-        if (formDataJsonString) {
-          console.log(formDataJsonString.email);
-          console.log(formDataObj['sourceNames']);
-          console.log(formDataObj.sourceNames);
-          console.log(formDataJsonString['sourceNames']);
-          console.log(formDataJsonString.sourceNames);
-        }
+
         let monsterArray = [];
 
         let entryNumber = formDataObj.sourceNames.length
@@ -238,6 +231,8 @@
           console.log(i)
         }
 
+        console.log(monsterArray);
+
         const request = {
           spreadsheetId: SPREADSHEET_ID,
           range: 'Sheet1',
@@ -245,7 +240,7 @@
           insertDataOption: 'INSERT_ROWS',
           resource: {
               "majorDimension": "ROWS",
-              "values": [["Row 1 Col 1","Row 1 Col 2", "Row 1 Col 3", "Row 1 Col 4"], ["Row 2 Col 1","Row 2 Col 2"]]
+              "values": monsterArray
               //[["Row 1 Col 1","Row 1 Col 2", "Row 1 Col 3", "Row 1 Col 4"], ["Row 2 Col 1","Row 2 Col 2"]]
           },
          // auth: tokenClient,
