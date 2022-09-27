@@ -39,15 +39,15 @@
 .material-symbols-outlined {
   font-variation-settings:
   'FILL' 0,
-  'wght' 200,
+  'wght' 400,
   'GRAD' 0,
-  'opsz' 24
+  'opsz' 48
 }
 
 
 .remove-row {
     max-height: 28px;
-    background-color: #BD162C;
+    background-color: #EB212E;
     color: #ffffff;
     border: none;
     border-radius: 4px;
