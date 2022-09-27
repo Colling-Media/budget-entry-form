@@ -47,6 +47,11 @@
 
 .remove-row {
     max-height: 28px;
+    background-color: #BD162C;;
+    color: #ffffff;
+    border: none;
+    border-radius: 4px;
+
 }
 
 textarea:focus {
