@@ -1,7 +1,6 @@
-/* .wrapper {
-    display: grid;
-    grid-template-columns: 1fr 2fr;
-} */
+.wrapper {
+    margin: 12px 0 0 24px;
+}
 
 /* form {
     display: grid;
@@ -28,6 +27,7 @@
 
 .form-line {
    display: flex;
+   align-items: center;
 }
 
 .input-entry {
