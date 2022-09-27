@@ -23,3 +23,7 @@
 .form-line {
    display: flex;
 }
+
+.input-entry {
+    flex-direction: column;
+}

@@ -195,12 +195,17 @@
       }
 
       function removeFunction(event) {
-        console.log(event.target.id);
-        let numberDeleted = event.target.id;
-        CountButtonClicks = numberDeleted - 1;
-        let removeDiv = "repeat-row" + event.target.id;
-        let removeElement = document.getElementById(removeDiv);
-        removeElement.remove();
+        if (event.target.id > 0) {
+          console.log(event.target.id);
+          let numberDeleted = event.target.id;
+          CountButtonClicks = numberDeleted - 1;
+          let removeDiv = "repeat-row" + event.target.id;
+          let removeElement = document.getElementById(removeDiv);
+          removeElement.remove();
+        } 
+        else {
+          return;
+        }
       }
 
 
