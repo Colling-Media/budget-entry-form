@@ -18,4 +18,9 @@ form {
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
-  }
+}
+
+.form-line {
+   display: flex;
+   flex-direction: column;
+}
