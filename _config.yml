@@ -1,5 +1,5 @@
 title: myproject
-url: ""
+url: "https://colling-media.github.io/budget-entry-form/"
 markdown: kramdown
 theme: jekyll-theme-cayman
 exclude: [vendor]
