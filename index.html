@@ -33,7 +33,7 @@
               <input type="date" id="endDate" name="endDate" value="" required="">
           </div>
         </div>
-        <div class="form-line" id="repeat-row0">
+        <div id="repeat-row0">
           <div class="form-line" class="repeat-format" id="repeat0">
             <div class="input-entry">
                 <label for="sourceNames">Source</label>
@@ -191,7 +191,7 @@
         let repeatNumber = CountButtonClicks - 1;
         console.log(repeatNumber);
           document.getElementById("repeat-row" + repeatNumber).insertAdjacentHTML('afterend',
-          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source</label><select name="sourceNames" id="sourceNames" required="required"><option value="Google">Google</option><option value="Facebook">Facebook</option><option value="Tradedesk">Tradedesk</option><option value="Linkedin">Linkedin</option></select></div><div class="input-entry"><label for="mediaType">Media type</label><select name="mediaType" id="mediaType" required=""><option value="video ads">video ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="display ads">display ads</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row" id=' + CountButtonClicks + ' onclick="removeFunction(event)">x</button></div></div></div>');
+          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source</label><select name="sourceNames" id="sourceNames" required="required"><option value="Google">Google</option><option value="Facebook">Facebook</option><option value="Tradedesk">Tradedesk</option><option value="Linkedin">Linkedin</option></select></div><div class="input-entry"><label for="mediaType">Media type</label><select name="mediaType" id="mediaType" required=""><option value="video ads">video ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="display ads">display ads</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row" id=' + CountButtonClicks + ' onclick="removeFunction(event)">x</button></div></div></div>');
       }
 
       function removeFunction(event) {
