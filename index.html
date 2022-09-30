@@ -25,7 +25,7 @@
               <label class="form-label" for="account">Account</label>
               <select name="account" id="account" class="select0" required="">
                 <!-- Get options function -->
-                <option value="Google">Google</option>
+                <!-- <option value="Google">Google</option> -->
             </select>
           </div>
           <div class="input-entry">
@@ -188,7 +188,7 @@
     function setAccountDropdown(accountArray) {
       console.log("what this???", accountArray[0]);
       for (let i = 0; i < accountArray.lenght; i++) {
-        document.getElementById("select" + i).insertAdjacentHTML('afterend', '<option class=select' + i + 'value=' + accountArray[i] + '>' + accountArray[i] + '</option>')
+        document.querySelector(".select" + i).insertAdjacentHTML('afterend', '<option class=select' + i + 'value=' + accountArray[i] + '>' + accountArray[i] + '</option>')
       }
     }
 
