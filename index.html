@@ -63,10 +63,22 @@
               <input type="number" id="budget" name="budget" value="" required="">
           </div>
           <div class="input-entry">
+            <label class="form-label" for="primaryGoal">Primary goal</label>
+            <select name="primaryGoal" id="primaryGoal" required="">
+              <option value="Google">Form submissions</option>
+              <option value="Facebook">Calls from website</option>
+              <option value="Tradedesk">Purchases</option>
+            </select>
+          </div>
+          <div class="input-entry">
+            <label class="form-label" for="primaryGoalCount">Primary goal count</label>
+            <input type="text" id="primaryGoalCount" name="primaryGoalCount" value="">
+          </div>
+          <div class="input-entry">
               <label class="form-label" for="notes">Notes</label>
               <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
           </div>
-          <button type="button" class="remove-row" id="0" onclick="removeFunction(event)"><span class="material-symbols-outlined">
+          <button type="button" class="remove-row btn material-symbols-outlined" id="0" onclick="removeFunction(event)"><span class="material-symbols-outlined" id="0">
             delete
             </span>
           </button>
@@ -146,8 +158,38 @@
       function maybeEnableButtons() {
         if (gapiInited && gisInited) {
           document.getElementById('authorize_button').style.visibility = 'visible';
+          makeApiCall();
         }
       }
+
+      function makeApiCall() {
+      var params = {
+        // The ID of the spreadsheet to retrieve data from.
+        spreadsheetId: '1024aK6jQVUOEkOEl9wS9ZNzE8yQZvec1qVjidm0n4qc',  // TODO: Update placeholder value.
+
+        // The A1 notation of the values to retrieve.
+        range: 'Lookup Table - Accounts',  // TODO: Update placeholder value.
+
+        // How values should be represented in the output.
+        // The default render option is ValueRenderOption.FORMATTED_VALUE.
+        valueRenderOption: '',  // TODO: Update placeholder value.
+
+        // How dates, times, and durations should be represented in the output.
+        // This is ignored if value_render_option is
+        // FORMATTED_VALUE.
+        // The default dateTime render option is [DateTimeRenderOption.SERIAL_NUMBER].
+        dateTimeRenderOption: '',  // TODO: Update placeholder value.
+      };
+
+      var request = gapi.client.sheets.spreadsheets.values.get(params);
+      request.then(function(response) {
+        // TODO: Change code below to process the `response` object:
+        console.log(response.result);
+      }, function(reason) {
+        console.error('error: ' + reason.result.error.message);
+      });
+    }
+
 
       /**
        *  Sign in the user upon button click.
@@ -159,7 +201,6 @@
           }
           document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
-         // await listMajors();
         };
 
         if (gapi.client.getToken() === null) {
@@ -194,8 +235,13 @@
         CountButtonClicks += 1;
         let repeatNumber = CountButtonClicks - 1;
         console.log(repeatNumber);
-          document.getElementById("repeat-row" + repeatNumber).insertAdjacentHTML('afterend',
-          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source</label><select name="sourceNames" id="sourceNames" required="required"><option value="Google">Google</option><option value="Facebook">Facebook</option><option value="Tradedesk">Tradedesk</option><option value="Linkedin">Linkedin</option></select></div><div class="input-entry"><label for="mediaType">Media type</label><select name="mediaType" id="mediaType" required=""><option value="video ads">video ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="display ads">display ads</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined">delete</span></button></div></div></div>');
+        let rowArray = document.querySelectorAll(".form-line")
+        let indexNumber = document.querySelectorAll(".form-line").length - 1;
+        let addOrder = rowArray[indexNumber].id.substring(6);
+
+          // console.log("what is this?", addOrder);
+          document.getElementById("repeat-row" + addOrder).insertAdjacentHTML('afterend',
+          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source</label><select name="sourceNames" id="sourceNames" required="required"><option value="Google">Google</option><option value="Facebook">Facebook</option><option value="Tradedesk">Tradedesk</option><option value="Linkedin">Linkedin</option></select></div><div class="input-entry"><label for="mediaType">Media type</label><select name="mediaType" id="mediaType" required=""><option value="video ads">video ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="display ads">display ads</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="primaryGoal">Primary goal</label><select name="primaryGoal" id="primaryGoal" required=""><option value="Google">Form submissions</option><option value="Facebook">Calls from website</option><option value="Tradedesk">Purchases</option></select></div><div class="input-entry"><label class="form-label" for="primaryGoalCount">Primary goal count</label><input type="text" id="primaryGoalCount" name="primaryGoalCount" value=""></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row btn" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined" id=' + CountButtonClicks + '>delete</span></button></div></div></div>');
       }
 
       function removeFunction(event) {
