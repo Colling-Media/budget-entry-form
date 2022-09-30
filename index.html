@@ -189,7 +189,8 @@
       console.log("what this???", accountArray.length);
       for (let i = 0; i < accountArray.length; i++) {
         console.log(document.querySelector(".select" + i), accountArray[i]);
-        document.querySelector(".select" + i).insertAdjacentHTML('afterend', '<option class=select' + i + 'value=' + accountArray[i] + '>' + accountArray[i] + '</option>')
+        let selector = i + 1;
+        document.querySelector(".select" + i).insertAdjacentHTML('afterend', '<option class=select' + selector + 'value=' + accountArray[i] + '>' + accountArray[i] + '</option>')
       }
     }
 
