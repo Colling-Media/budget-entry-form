@@ -207,7 +207,6 @@
     }
 
     function setAccountDropdown(accountArray) {
-      console.log("what this???", accountArray.length);
       for (let i = 1; i < accountArray.length; i++) {
         let selector = i + 1;
         document.querySelector(".select" + i).insertAdjacentHTML('afterend', '<option class=select' + selector + ' value=' + accountArray[i] + '>' + accountArray[i] + '</option>')
@@ -260,7 +259,6 @@
       function myFunction() {
         CountButtonClicks += 1;
         let repeatNumber = CountButtonClicks - 1;
-        console.log(repeatNumber);
         let rowArray = document.querySelectorAll(".form-line")
         let indexNumber = document.querySelectorAll(".form-line").length - 1;
         let addOrder = rowArray[indexNumber].id.substring(6);
@@ -288,7 +286,6 @@
       async function onSubmission(event) {
         let formElement = document.getElementById("theForm");
         const url = theForm.action;
-        console.log(formElement);
         const params = {
             spreadsheetId: SPREADSHEET_ID,
             range: 'Sheet1',
@@ -316,8 +313,6 @@
         for (let i = 0; i < entryNumber; i++) {
           monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i], formDataObj.notes[i]]);
         }
-
-        console.log(monsterArray);
 
         const request = {
           spreadsheetId: SPREADSHEET_ID,
