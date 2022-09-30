@@ -42,10 +42,56 @@
    align-items: center;
 }
 
+.form-style-5 {
+    max-width: 1250px;
+	padding: 10px 20px;
+	margin: 10px auto;
+	padding: 20px;
+	background: #ededed;
+	border-radius: 8px;
+}
+
+.form-style-5 select{
+	-webkit-appearance: menulist-button;
+	height:35px;
+}
+
+.form-style-5 input[type="text"],
+.form-style-5 input[type="date"],
+.form-style-5 input[type="datetime"],
+.form-style-5 input[type="email"],
+.form-style-5 input[type="number"],
+.form-style-5 input[type="search"],
+.form-style-5 input[type="time"],
+.form-style-5 input[type="url"],
+.form-style-5 textarea,
+.form-style-5 select {
+	border: none;
+	border-radius: 4px;
+	font-size: 15px;
+	margin: 0;
+	outline: 0;
+	padding: 10px;
+	width: 100%;
+	box-sizing: border-box; 
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box; 
+	-webkit-box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	box-shadow: 0 1px 0 rgba(0,0,0,0.03) inset;
+	margin-bottom: 30px;
+    font-size: 12px;
+}
+
+.form-style-5 label {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 11px;
+    margin-bottom: 2px;
+}
+
 .input-entry {
     display: flex;
     flex-direction: column;
-    margin: 4px 8px 16px 0;
+    margin: 4px 8px -8px 0;
 }
 
 .remove-row {
