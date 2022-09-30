@@ -23,7 +23,10 @@
           </div>
           <div class="input-entry">
               <label class="form-label" for="account">Account</label>
-              <input type="text" id="account" name="account" value="" required="">
+              <select name="account" id="account" class="select0" required="">
+                <!-- Get options function -->
+                <option value="Google">Google</option>
+            </select>
           </div>
           <div class="input-entry">
               <label class="form-label" for="startDate">Start date</label>
@@ -175,11 +178,21 @@
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
         console.log(response.result.values);
-        let accountArray = response.results.values;
+        let accountArray = response.result.values;
+        setAccountDropdown(accountArray);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
       });
     }
+
+    function setAccountDropdown(accountArray) {
+      console.log("what this???", accountArray[0]);
+      for (let i = 0; i < accountAray.lenght; i++) {
+        document.getElementById("select" + i).insertAdjacentHTML('afterend', '<option class=select' + i + 'value=' + accountArray[i] + '>' + accountArray[i] + '</option>')
+      }
+    }
+
+
 
 
       /**
