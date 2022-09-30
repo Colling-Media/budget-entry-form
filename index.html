@@ -188,6 +188,7 @@
     function setAccountDropdown(accountArray) {
       console.log("what this???", accountArray[0]);
       for (let i = 0; i < accountArray.lenght; i++) {
+        console.log(document.querySelector(".select" + i), accountArray[i]);
         document.querySelector(".select" + i).insertAdjacentHTML('afterend', '<option class=select' + i + 'value=' + accountArray[i] + '>' + accountArray[i] + '</option>')
       }
     }
