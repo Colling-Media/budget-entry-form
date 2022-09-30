@@ -25,7 +25,7 @@
               <label class="form-label" for="account">Account</label>
               <select name="account" id="account" required="">
                 <!-- Get options function -->
-                <option class="select0" value="Google">Google</option>
+                <option class="select0" value="Google">Account</option>
             </select>
           </div>
           <div class="input-entry">
@@ -178,7 +178,7 @@
       request.then(function(response) {
         // TODO: Change code below to process the `response` object:
         console.log(response.result.values);
-        let accountArray = response.result.values[0];
+        let accountArray = response.result.values;
         setAccountDropdown(accountArray);
       }, function(reason) {
         console.error('error: ' + reason.result.error.message);
