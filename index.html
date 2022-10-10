@@ -13,15 +13,10 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <!-- The Modal -->
-    <div id="authModal" class="modal">
-
-      <!-- Modal content -->
-      <div id="authorization_modal" class="modal-content">
-        <span class="close">&times;</span>
-        <p>Please authorize to view form</p>
-        <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
-      </div>
-    </div>
+    <dialog open>
+      <p>Please authorize to view form</p>
+      <button id="authorize_button" onclick="handleAuthClick()">Authorize</button><button>Cancel</button>
+    </dialog>
 
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
@@ -153,7 +148,8 @@
       let gapiInited = false;
       let gisInited = false;
 
-      document.getElementById('authorization_modal').style.visibility = 'hidden';
+      //document.getElementById('authorization_modal').style.visibility = 'hidden';
+      document.querySelector('dialog').removeAttribute('open');
       document.getElementById('signout_button').style.visibility = 'hidden';
 
       /**
@@ -194,7 +190,7 @@
        */
       function maybeEnableButtons() {
         if (gapiInited && gisInited) {
-          document.getElementById("authorization_modal").style.visibility = 'visible';
+          //document.getElementById("authorization_modal").style.visibility = 'visible';
           makeApiCall();
         }
       }
