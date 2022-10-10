@@ -184,6 +184,7 @@
        */
       function maybeEnableButtons() {
         if (gapiInited && gisInited) {
+          alert("please authorize");
           document.getElementById('authorize_button').style.visibility = 'visible';
           makeApiCall();
         }
