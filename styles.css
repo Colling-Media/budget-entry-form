@@ -30,6 +30,10 @@ button {
     background-color: green;
 }
 
+.bottom-container {
+
+}
+
   /* Darker background on mouse-over */
 .btn:hover {
     background-color: red;
@@ -41,17 +45,12 @@ button {
     grid-gap: 20px;
 } */
 
-.full-width {
-    max-width: 1150px;   
-    margin-top: 4px;
-}
-
 .button-container {
     display: flex;
     flex-direction: column;
     max-width: 920px;
     align-items: flex-end;
-    margin-top: -60px;
+    margin-top: -58px;
 }
 
 .contain {
@@ -59,6 +58,10 @@ button {
     margin-left: auto;
     margin-right: auto;
     padding: 1em;
+}
+
+#email {
+    width: 300px;
 }
 
 .form-line {
@@ -112,12 +115,13 @@ button {
     margin-bottom: 3px;
 }
 
-#notes, #startDate, #endDate {
-    font-family: Arial, Helvetica, sans-serif;
+.full-width {
+    max-width: 1150px;   
+    margin-top: 4px;
 }
 
-#email {
-    width: 300px;
+#notes, #startDate, #endDate {
+    font-family: Arial, Helvetica, sans-serif;
 }
 
 .input-entry {
@@ -140,6 +144,10 @@ button {
     background-color: #EB212E;
     color: #ffffff;
     border: none;
+}
+
+.shift {
+    margin-left: 4px;
 }
 
 textarea:focus {
