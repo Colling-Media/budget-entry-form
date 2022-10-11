@@ -1,3 +1,16 @@
+button {
+    border: none; /* Remove borders */
+    color: white; /* White text */  
+    font-size: 16px; /* Set a font size */
+    cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #aaaaaa;
+    background-color: rgb(73, 73, 73);
+    min-height: 24px;
+    text-align: center;
+}
+
+
 .wrapper {
     margin: 12px 0 0 24px;
 }
@@ -10,17 +23,6 @@
 .add-row:hover {
     background-color: blue;
 }
-
-button {
-    border: none; /* Remove borders */
-    color: white; /* White text */  
-    font-size: 16px; /* Set a font size */
-    cursor: pointer; /* Mouse pointer on hover */
-    border-radius: 4px;
-    box-shadow: 2px 2px 4px #aaaaaa;
-    background-color: rgb(73, 73, 73);
-    min-height: 24px;
-  }
 
 .bottom-buttons {
     background-color: green;
@@ -89,6 +91,7 @@ button {
 	margin: 0;
 	outline: 0;
 	padding: 10px;
+    height: 28px;
 	width: 100%;
 	box-sizing: border-box; 
 	-webkit-box-sizing: border-box;
