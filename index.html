@@ -359,8 +359,8 @@
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
          // alert("Thank you for submitting this form!");
-          document.querySelector('confirmation-dialog').setAttribute('open');
-          document.querySelector('.confirmation-modale').style.visibility = 'visible';
+          document.querySelector(".confirmation-dialog").setAttribute('open');
+          document.querySelector(".confirmation-modale").style.visibility = 'visible';
           document.querySelector(".budget-entry").reset();
           console.log(JSON.stringify(response));
       } catch (err) {
@@ -390,7 +390,7 @@
     }
 
     function closeConfirmation() {
-      document.querySelector('confirmation-dialog').removeAttribute('open');
+      document.querySelector('.confirmation-dialog').removeAttribute('open');
       document.querySelector('.confirmation-modale').style.visibility = 'hidden';
     }
 
