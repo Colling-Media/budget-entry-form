@@ -24,30 +24,30 @@
       <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
         <div class="form-line">
           <div class="input-entry">
-              <label class="form-label" for="email">Email</label>
-              <input type="email" id="email" name="email" value="" required="">
+              <label class="form-label" for="email">Email *</label>
+              <input type="email" id="email" name="email" value="" required="true">
           </div>
           <div class="input-entry">
-              <label class="form-label" for="account">Account</label>
-              <select name="account" id="account" required="">
+              <label class="form-label" for="account">Account *</label>
+              <select name="account" id="account" required="true">
                 <!-- Get options function -->
                 <option class="select1" value="Google">Account</option>
             </select>
           </div>
           <div class="input-entry">
-              <label class="form-label" for="startDate">Start date</label>
-              <input type="date" id="startDate" name="startDate" value="" required="">
+              <label class="form-label" for="startDate">Start date *</label>
+              <input type="date" id="startDate" name="startDate" value="" required="true">
           </div>
           <div class="input-entry">
-              <label class="form-label" for="endDate">End date</label>
-              <input type="date" id="endDate" name="endDate" value="" required="">
+              <label class="form-label" for="endDate">End date *</label>
+              <input type="date" id="endDate" name="endDate" value="" required="true">
           </div>
         </div>
         <div id="repeat-row0">
           <div class="form-line" class="repeat-format" id="repeat0">
             <div class="input-entry">
-                <label for="sourceNames">Source</label>
-                <select name="sourceNames" id="sourceNames" required="">
+                <label for="sourceNames">Source *</label>
+                <select name="sourceNames" id="sourceNames" required="true">
                       <option value="apple">apple</option>
                       <option value="bing">bing</option>
                       <option value="colling media">colling media</option>
@@ -62,8 +62,8 @@
                   </select>
             </div>
             <div class="input-entry">
-                <label for="mediaType">Media type</label>
-                <select name="mediaType" id="mediaType" required="">
+                <label for="mediaType">Product/Service *</label>
+                <select name="mediaType" id="mediaType" required="true">
                       <option value="audio ads">audio ads</option>
                       <option value="app install ads">app install ads</option>
                       <option value="display ads">display ads</option>
@@ -75,6 +75,7 @@
                       <option value="performance max ads">performance max ads</option>
                       <option value="post engagement ads">post engagement ads</option>
                       <option value="radio ads">radio ads</option>
+                      <option value="retainer fee">retainer fee</option>
                       <option value="reach ads">reach ads</option>
                       <option value="search ads">search ads</option>
                       <option value="seo">seo</option>
@@ -88,27 +89,27 @@
             </div>
             <div class="input-entry">
               <label class="form-label" for="campaign">Campaign</label>
-              <input type="text" id="campaign" name="campaign" value="">
+              <input type="text" id="campaign" name="campaign" value="" required="false">
           </div>
           <div class="input-entry">
-              <label class="form-label" for="budget">Budget</label>
-              <input type="number" id="budget" name="budget" value="" required="">
+              <label class="form-label" for="budget">Budget *</label>
+              <input type="number" id="budget" name="budget" value="" required="true">
           </div>
           <div class="input-entry">
             <label class="form-label" for="primaryGoal">Primary goal</label>
-            <select name="primaryGoal" id="primaryGoal" required="">
-              <option value="Google">Form submissions</option>
-              <option value="Facebook">Calls from website</option>
-              <option value="Tradedesk">Purchases</option>
+            <select name="primaryGoal" id="primaryGoal" required="false">
+              <option value="Form submissions">Form submissions</option>
+              <option value="Calls">Calls from website</option>
+              <option value="Purchases">Purchases</option>
             </select>
           </div>
           <div class="input-entry">
             <label class="form-label" for="primaryGoalCount">Primary goal count</label>
-            <input type="text" id="primaryGoalCount" name="primaryGoalCount" value="">
+            <input type="text" id="primaryGoalCount" name="primaryGoalCount" value="false">
           </div>
           <div class="input-entry">
               <label class="form-label" for="notes">Notes</label>
-              <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
+              <textarea id="notes" rows="1" cols="30" name="notes" value="false"></textarea>
           </div>
           <button type="button" class="remove-row btn material-symbols-outlined" id="0" onclick="removeFunction(event)"><span class="material-symbols-outlined" id="0">
             delete
@@ -280,7 +281,7 @@
 
           // console.log("what is this?", addOrder);
           document.getElementById("repeat-row" + addOrder).insertAdjacentHTML('afterend',
-          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source</label><select name="sourceNames" id="sourceNames" required="required"><option value="apple">apple</option><option value="bing">bing</option><option value="colling media">colling media</option><option value="cox media">cox media</option><option value="facebook">facebook</option><option value="google">google</option><option value="linkedin">linkedin</option><option value="snapchat">snapchat</option><option value="tiktok">tiktok</option><option value="tradedesk">tradedesk</option><option value="other">other</option></select></div><div class="input-entry"><label for="mediaType">Media type</label><select name="mediaType" id="mediaType" required=""> <option value="audio ads">audio ads</option><option value="app install ads">app install ads</option><option value="display ads">display ads</option><option value="call only ads">call only ads</option><option value="conversion ads">conversion ads</option><option value="lead ads">lead ads</option><option value="organic social">organic social</option><option value="outdoor ads">outdoor ads</option><option value="performance max ads">performance max ads</option><option value="post engagement ads">post engagement ads</option><option value="radio ads">radio ads</option><option value="reach ads">reach ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="shopping ads">shopping ads</option><option value="traffic ads">traffic ads</option><option value="video ads">video ads</option><option value="video ads - cable tv">video ads - cable tv</option><option value="website maintenance">website maintenance</option><option value="not set">not set</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget</label><input type="number" id="budget" name="budget"></div><div class="input-entry"><label class="form-label" for="primaryGoal">Primary goal</label><select name="primaryGoal" id="primaryGoal" required=""><option value="Google">Form submissions</option><option value="Facebook">Calls from website</option><option value="Tradedesk">Purchases</option></select></div><div class="input-entry"><label class="form-label" for="primaryGoalCount">Primary goal count</label><input type="text" id="primaryGoalCount" name="primaryGoalCount" value=""></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row btn" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined" id=' + CountButtonClicks + '>delete</span></button></div></div></div>');
+          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source *</label><select name="sourceNames" id="sourceNames" required="true"><option value="apple">apple</option><option value="bing">bing</option><option value="colling media">colling media</option><option value="cox media">cox media</option><option value="facebook">facebook</option><option value="google">google</option><option value="linkedin">linkedin</option><option value="snapchat">snapchat</option><option value="tiktok">tiktok</option><option value="tradedesk">tradedesk</option><option value="other">other</option></select></div><div class="input-entry"><label for="mediaType">Product/Service *</label><select name="mediaType" id="mediaType" required="true"> <option value="audio ads">audio ads</option><option value="app install ads">app install ads</option><option value="display ads">display ads</option><option value="call only ads">call only ads</option><option value="conversion ads">conversion ads</option><option value="lead ads">lead ads</option><option value="organic social">organic social</option><option value="outdoor ads">outdoor ads</option><option value="performance max ads">performance max ads</option><option value="post engagement ads">post engagement ads</option><option value="radio ads">radio ads</option><option value="retainer fee">retainer fee</option><option value="reach ads">reach ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="shopping ads">shopping ads</option><option value="traffic ads">traffic ads</option><option value="video ads">video ads</option><option value="video ads - cable tv">video ads - cable tv</option><option value="website maintenance">website maintenance</option><option value="not set">not set</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget *</label><input type="number" id="budget" name="budget" required="true"></div><div class="input-entry"><label class="form-label" for="primaryGoal">Primary goal</label><select name="primaryGoal" id="primaryGoal" required=""><option value="Form submissions">Form submissions</option><option value="Calls from website">Calls from website</option><option value="Purchases">Purchases</option></select></div><div class="input-entry"><label class="form-label" for="primaryGoalCount">Primary goal count</label><input type="text" id="primaryGoalCount" name="primaryGoalCount" value=""></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row btn" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined" id=' + CountButtonClicks + '>delete</span></button></div></div></div>');
       }
 
       function removeFunction(event) {
@@ -314,6 +315,8 @@
         formDataObj['mediaType'] = myFormData.getAll('mediaType');
         formDataObj.campaign = myFormData.getAll('campaign');
         formDataObj.budget = myFormData.getAll('budget');
+        formDataObj.budget = myFormData.getAll('primaryGoal');
+        formDataObj.budget = myFormData.getAll('primaryGoalCount');
         formDataObj.notes = myFormData.getAll('notes');
         console.log("testing what is here", formDataObj);
         const formDataJsonString = JSON.stringify(formDataObj)
@@ -347,7 +350,7 @@
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
           alert("Thank you for submitting this form!");
-          document.getElementById("budget-entry").reset();
+          document.querySelector(".budget-entry").reset();
           console.log(JSON.stringify(response));
       } catch (err) {
           console.error(err);
