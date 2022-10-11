@@ -9,6 +9,8 @@ button {
     cursor: pointer; /* Mouse pointer on hover */
     border-radius: 4px;
     box-shadow: 2px 2px 4px #aaaaaa;
+    background-color: rgb(73, 73, 73);
+    min-height: 24px;
   }
 
 .bottom-buttons {
