@@ -53,11 +53,10 @@ button {
 .form-style-5 {
     max-width: 1250px;
 	padding: 10px 20px;
-	margin: 10px auto;
+	margin: 24px 12px;
 	padding: 20px;
 	background: #ededed;
 	border-radius: 8px;
-    padding-top: 24px;
 }
 
 .form-style-5 select{
