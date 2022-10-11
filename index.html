@@ -13,10 +13,12 @@
 
     <!--Add buttons to initiate auth sequence and sign out-->
     <!-- The Modal -->
-    <dialog open>
-      <p>Please authorize to view form</p>
-      <button id="authorize_button" onclick="handleAuthClick()">Authorize</button><button>Cancel</button>
-    </dialog>
+    <div class="modale" aria-hidden="true">
+      <dialog class="modal-dialog" open>
+        <p>Please authorize to view form</p>
+        <button id="authorize_button" onclick="handleAuthClick()">Authorize</button>
+      </dialog>
+    </div>
 
     <button id="signout_button" onclick="handleSignoutClick()">Sign Out</button>
 
@@ -149,7 +151,7 @@
       let gisInited = false;
 
       //document.getElementById('authorization_modal').style.visibility = 'hidden';
-      document.querySelector('dialog').removeAttribute('open');
+      //document.querySelector('dialog').removeAttribute('open');
       document.getElementById('signout_button').style.visibility = 'hidden';
 
       /**
@@ -190,6 +192,7 @@
        */
       function maybeEnableButtons() {
         if (gapiInited && gisInited) {
+          document.querySelector('dialog').setAttribute('open');
           //document.getElementById("authorization_modal").style.visibility = 'visible';
           makeApiCall();
         }
