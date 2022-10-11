@@ -320,7 +320,7 @@
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
         console.log("form data object", formDataObj);
-        formDataObj.account = myFormData.getAll('account');
+        // formDataObj.account = myFormData.getAll('account');
         formDataObj['sourceNames'] = myFormData.getAll('sourceNames');
         formDataObj['mediaType'] = myFormData.getAll('mediaType');
         formDataObj.campaign = myFormData.getAll('campaign');
