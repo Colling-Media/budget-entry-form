@@ -97,7 +97,7 @@
           </div>
           <div class="input-entry">
             <label class="form-label" for="primaryGoal">Primary goal</label>
-            <select name="primaryGoal" id="primaryGoal" required="false">
+            <select name="primaryGoal" id="primaryGoal">
               <option value="Form submissions">Form submissions</option>
               <option value="Calls">Calls from website</option>
               <option value="Purchases">Purchases</option>
@@ -330,7 +330,7 @@
         let entryNumber = formDataObj.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
-          monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i], formDataObj.notes[i]]);
+          monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i], formDataObj[i].primaryGoal, formDataObj[i].primaryGoalCount, formDataObj.notes[i]]);
         }
 
         const request = {
