@@ -344,10 +344,10 @@
             'values': [formDataJsonString]
         }
 
-        const currentDate = new Date();
-        const timestamp = currentDate.getTime();
+        let currentDate = new Date();
+        let timestamp = currentDate.getTime();
 
-        timestamp.toLocaleString(undefined, {
+        timestamp = timestamp.toLocaleString(undefined, {
             day:    'numeric',
             month:  'numeric',
             year:   'numeric',
