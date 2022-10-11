@@ -2,12 +2,18 @@
     margin: 12px 0 0 24px;
 }
 
-.btn {
+.button {
     border: none; /* Remove borders */
     color: white; /* White text */  
     font-size: 16px; /* Set a font size */
     cursor: pointer; /* Mouse pointer on hover */
+    border-radius: 4px;
+    box-shadow: 2px 2px 4px #aaaaaa;
   }
+
+.bottom-buttons {
+    color: green;
+}
 
   /* Darker background on mouse-over */
 .btn:hover {
@@ -21,7 +27,7 @@
 } */
 
 .full-width {
-    width: 840px;   
+    max-width: 1150px;   
     margin-top: 4px;
 }
 
@@ -94,7 +100,7 @@
 }
 
 #email {
-    width: 112px;
+    width: 300px;
 }
 
 .input-entry {
@@ -108,8 +114,6 @@
     background-color: #EB212E;
     color: #ffffff;
     border: none;
-    border-radius: 4px;
-    box-shadow: 2px 2px 4px #aaaaaa;
 }
 
 textarea:focus {
