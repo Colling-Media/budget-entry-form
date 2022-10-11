@@ -17,8 +17,9 @@ button {
 
 .add-row {
     background-color: rgb(24, 99, 170);
-    border-radius: 12px;
-    max-width: 32px;
+    border-radius: 24px;
+    max-width: 28px;
+    display: flex;
 }
 
 .add-row:hover {
