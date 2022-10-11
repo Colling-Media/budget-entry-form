@@ -124,7 +124,7 @@ textarea:focus {
 }
 
 /* The Modal (background) */
-.modal-dialog {
+.modal-dialog, .modal-dialog-confirmation {
     background: #fefefe;
     border: gray solid 3px;
     border-radius: 5px;
@@ -134,7 +134,7 @@ textarea:focus {
     z-index: 11 !important;
   }
 
-  .modale:before {
+  .modale:before, .confirmation-modale:before {
     content: "";
     background: rgba(0, 0, 0, 0.8);
     position: fixed;

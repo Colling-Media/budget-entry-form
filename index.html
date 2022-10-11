@@ -20,6 +20,14 @@
       </dialog>
     </div>
 
+    <!-- The Modal -->
+    <div class="confirmation-modale" aria-hidden="true">
+      <dialog class="modal-dialog-confirmation">
+        <p>Thank you for submitting your form</p>
+        <button id="close_button" onclick="closeConfirmation()">Ok</button>
+      </dialog>
+    </div>
+
     <div class="wrapper form-style-5">
       <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
         <div class="form-line">
@@ -350,7 +358,9 @@
       
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
-          alert("Thank you for submitting this form!");
+         // alert("Thank you for submitting this form!");
+          document.querySelector('confirmation-dialog').setAttribute('open');
+          document.querySelector('.confirmation-modale').style.visibility = 'visible';
           document.querySelector(".budget-entry").reset();
           console.log(JSON.stringify(response));
       } catch (err) {
@@ -377,6 +387,11 @@
          // return res.json();
       //  })
        // .then((res) => console.log(res));
+    }
+
+    function closeConfirmation() {
+      document.querySelector('confirmation-dialog').removeAttribute('open');
+      document.querySelector('.confirmation-modale').style.visibility = 'hidden';
     }
 
 
