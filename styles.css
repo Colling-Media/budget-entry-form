@@ -2,7 +2,7 @@
     margin: 12px 0 0 24px;
 }
 
-.button {
+button {
     border: none; /* Remove borders */
     color: white; /* White text */  
     font-size: 16px; /* Set a font size */
@@ -12,7 +12,7 @@
   }
 
 .bottom-buttons {
-    color: green;
+    background-color: green;
 }
 
   /* Darker background on mouse-over */
