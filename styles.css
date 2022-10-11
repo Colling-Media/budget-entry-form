@@ -152,6 +152,7 @@ textarea:focus {
     width: 360px;
     text-align:center;
     z-index: 11 !important;
+    position: fixed;
   }
 
   .modale:before, .confirmation-modale:before {
