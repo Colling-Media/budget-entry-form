@@ -235,6 +235,7 @@
           if (resp.error !== undefined) {
             throw (resp);
           }
+          document.querySelector('dialog').removeAttribute('open');
           document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
         };
