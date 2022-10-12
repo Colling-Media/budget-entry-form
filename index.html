@@ -348,11 +348,8 @@
             'values': [formDataJsonString]
         }
 
-        let currentDate = new Date();
-        let timestamp = currentDate.getTime();
-
-        console.log(timestamp.toLocaleString('en-US'));
-        timestamp = timestamp.toLocaleString('en-US');
+        const d = new Date();
+        let timestamp = d.toLocaleString();
 
         let monsterArray = [];
 
