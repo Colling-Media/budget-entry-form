@@ -261,12 +261,7 @@
           document.getElementById('authorize_button').innerText = 'Refresh';
           auth2 = gapi.auth2.getAuthInstance();
           console.log(auth2);
-          gapi.client.gmail.users.getProfile({
-              'userId': 'me'
-          }).then(function(response) {
-            console.log(response);
-          });
-        };
+          console.log(gapi.client.gmail);
 
         if (gapi.client.getToken() === null) {
           // Prompt the user to select a Google Account and ask for consent to share their data
