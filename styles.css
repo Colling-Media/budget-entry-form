@@ -33,7 +33,7 @@ button {
 }
 
 .bottom-container {
-    margin: -40px 44px;
+    margin-top: 32px;
     display: flex;
     justify-content: flex-end;
 }
