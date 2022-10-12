@@ -11,9 +11,9 @@ button {
 }
 
 
-.wrapper {
+/* .wrapper {
     margin: 12px auto;
-}
+} */
 
 .add-row {
     background-color: rgb(24, 99, 170);
@@ -48,6 +48,10 @@ button {
     grid-template-columns: 1fr 1fr;
     grid-gap: 20px;
 } */
+
+.budget-entry {
+    margin: 24px auto;
+}
 
 .button-container {
     display: flex;
@@ -177,8 +181,9 @@ button {
     margin-left: -4px;
 }
 
+/* for the notes section */
 textarea:focus {
-    width: 243px;
+    width: 555px;
     height: 82px;
 }
 
