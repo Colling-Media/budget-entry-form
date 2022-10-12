@@ -298,7 +298,7 @@
 
           // console.log("what is this?", addOrder);
           document.getElementById("repeat-row" + addOrder).insertAdjacentHTML('afterend',
-          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source *</label><select name="sourceNames" id="sourceNames" required="true"><option value="apple">apple</option><option value="bing">bing</option><option value="colling media">colling media</option><option value="cox media">cox media</option><option value="facebook">facebook</option><option value="google">google</option><option value="linkedin">linkedin</option><option value="snapchat">snapchat</option><option value="tiktok">tiktok</option><option value="tradedesk">tradedesk</option><option value="other">other</option></select></div><div class="input-entry"><label for="mediaType">Product/Service *</label><select name="mediaType" id="mediaType" required="true"> <option value="audio ads">audio ads</option><option value="app install ads">app install ads</option><option value="display ads">display ads</option><option value="call only ads">call only ads</option><option value="conversion ads">conversion ads</option><option value="lead ads">lead ads</option><option value="organic social">organic social</option><option value="outdoor ads">outdoor ads</option><option value="performance max ads">performance max ads</option><option value="post engagement ads">post engagement ads</option><option value="radio ads">radio ads</option><option value="retainer fee">retainer fee</option><option value="reach ads">reach ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="shopping ads">shopping ads</option><option value="traffic ads">traffic ads</option><option value="video ads">video ads</option><option value="video ads - cable tv">video ads - cable tv</option><option value="website maintenance">website maintenance</option><option value="not set">not set</option></select></div><div class="input-entry"><label class="form-label" for="budget">Budget *</label><input type="number" id="budget" name="budget" required="true"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row btn" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined" id=' + CountButtonClicks + '>delete</span></button></div></div></div>');
+          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source *</label><select name="sourceNames" id="sourceNames" required="true"><option value="apple">apple</option><option value="bing">bing</option><option value="colling media">colling media</option><option value="cox media">cox media</option><option value="facebook">facebook</option><option value="google">google</option><option value="linkedin">linkedin</option><option value="snapchat">snapchat</option><option value="tiktok">tiktok</option><option value="tradedesk">tradedesk</option><option value="other">other</option></select></div><div class="input-entry"><label for="mediaType">Product/Service *</label><select name="mediaType" id="mediaType" required="true"><option value="not set">not set</option><option value="audio ads">audio ads</option><option value="app install ads">app install ads</option><option value="display ads">display ads</option><option value="call only ads">call only ads</option><option value="conversion ads">conversion ads</option><option value="lead ads">lead ads</option><option value="organic social">organic social</option><option value="outdoor ads">outdoor ads</option><option value="performance max ads">performance max ads</option><option value="post engagement ads">post engagement ads</option><option value="radio ads">radio ads</option><option value="retainer fee">retainer fee</option><option value="reach ads">reach ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="shopping ads">shopping ads</option><option value="traffic ads">traffic ads</option><option value="video ads">video ads</option><option value="video ads - cable tv">video ads - cable tv</option><option value="website maintenance">website maintenance</option></select></div><div class="input-entry"><label class="form-label" for="budget">Budget *</label><input type="number" id="budget" name="budget" required="true"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="30"></textarea></div><button type="button" class="remove-row btn" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined" id=' + CountButtonClicks + '>delete</span></button></div></div></div>');
       }
 
       //with campaign and primary goals!!!
@@ -380,10 +380,8 @@
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
          // alert("Thank you for submitting this form!");
-          document.querySelector(".modal-dialog-confirmation").setAttribute('open', 'open');
-          document.querySelector(".confirmation-modale").style.visibility = 'visible';
-          document.querySelector(".budget-entry").reset();
           console.log(JSON.stringify(response));
+          resetForm();
       } catch (err) {
           console.error(err);
       }
@@ -414,6 +412,14 @@
     function closeConfirmation() {
       document.querySelector('.modal-dialog-confirmation').removeAttribute('open');
       document.querySelector('.confirmation-modale').style.visibility = 'hidden';
+    }
+
+    function resetForm() {
+      document.querySelector(".modal-dialog-confirmation").setAttribute('open', 'open');
+      document.querySelector(".confirmation-modale").style.visibility = 'visible';
+      document.querySelector(".budget-entry").reset();
+      let resetElement = document.querySelectorAll(".repeat-format");
+      resetElement.remove();
     }
 
 
