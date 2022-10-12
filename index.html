@@ -259,13 +259,14 @@
           document.querySelector('.modale').style.visibility = 'hidden';
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
-          auth2 = gapi.auth2.getAuthInstance();
-          console.log(auth2);
-          console.log(gapi.client.gmail);
+          // auth2 = gapi.auth2.getAuthInstance();
+          // console.log(auth2);
+          // console.log(gapi.client.gmail);
 
         if (gapi.client.getToken() === null) {
           // Prompt the user to select a Google Account and ask for consent to share their data
           // when establishing a new session.
+          console.log(gapi.client.gmail);
           tokenClient.requestAccessToken({prompt: 'consent'});
         } else {
           // Skip display of account chooser and consent dialog for an existing session.
