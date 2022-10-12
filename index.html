@@ -261,8 +261,11 @@
           document.getElementById('authorize_button').innerText = 'Refresh';
           auth2 = gapi.auth2.getAuthInstance();
           console.log(auth2);
-          console.log(gapi.users.getProfile({ userId: "me" }))
-          // gapi.client.directory.users.list
+          gapi.client.gmail.users.getProfile({
+              'userId': 'me'
+          }).then(function(response) {
+            console.log(response);
+          });
         };
 
         if (gapi.client.getToken() === null) {
