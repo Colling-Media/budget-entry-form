@@ -83,6 +83,8 @@ button {
 	padding: 20px;
 	background: #ededed;
 	border-radius: 8px;
+    display: flex;
+    justify-content: center;
 }
 
 .form-style-5 select{
