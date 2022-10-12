@@ -259,7 +259,8 @@
           document.querySelector('.modale').style.visibility = 'hidden';
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
-          console.log(gapi.client.getToken());
+          console.log(gapi.client);
+          console.log(gapi.client.setApiKey(API_KEY));
           // await gapi.client.request({
           //   apiKey: API_KEY,
           //   discoveryDocs: [DISCOVERY_DOC],
