@@ -163,7 +163,7 @@
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
-      const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://mail.google.com/ https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/gmail.readonly';
+      const SCOPES = 'https://www.googleapis.com/auth/spreadsheets https://mail.google.com/'
 
 
       let tokenClient;
@@ -260,7 +260,9 @@
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
           console.log(gapi.client);
+          console.log(tokenCient);
           console.log(google.accounts.oauth2);
+          await listUser();
           // await gapi.client.request({
           //   apiKey: API_KEY,
           //   discoveryDocs: [DISCOVERY_DOC],
@@ -416,6 +418,20 @@
       //  })
        // .then((res) => console.log(res));
     }
+
+    async function listUser() {
+        let response;
+        try {
+          response = await gapi.client.gmail.users.labels.list({
+            'userId': 'me',
+          });
+        } catch (err) {
+          document.getElementById('content').innerText = err.message;
+          return;
+        }
+        const labels = response.result.labels;
+        console.log(response.results, labels);
+      }
 
     function closeConfirmation() {
       document.querySelector('.modal-dialog-confirmation').removeAttribute('open');
