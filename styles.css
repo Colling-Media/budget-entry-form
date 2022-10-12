@@ -31,7 +31,7 @@ button {
 }
 
 .bottom-container {
-
+    margin: 24px 0;
 }
 
   /* Darker background on mouse-over */
@@ -48,9 +48,9 @@ button {
 .button-container {
     display: flex;
     flex-direction: column;
-    max-width: 920px;
+    max-width: 900px;
     align-items: flex-end;
-    margin-top: -58px;
+    margin-top: -59px;
 }
 
 .contain {
@@ -131,24 +131,8 @@ button {
     'wght' 400,
     'GRAD' 0,
     'opsz' 48
-  }
-  
-
-.remove-row {
-    max-height: 28px;
-    background-color: #EB212E;
-    color: #ffffff;
-    border: none;
 }
 
-.shift {
-    margin-left: -4px;
-}
-
-textarea:focus {
-    width: 243px;
-    height: 82px;
-}
 
 /* The Modal (background) */
 .modal-dialog, .modal-dialog-confirmation {
@@ -172,4 +156,59 @@ textarea:focus {
     bottom: 0;
     z-index: 1;
   }
+  
 
+.remove-row {
+    max-height: 28px;
+    background-color: #EB212E;
+    color: #ffffff;
+    border: none;
+}
+
+.shift {
+    margin-left: -4px;
+}
+
+textarea:focus {
+    width: 243px;
+    height: 82px;
+}
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+  }
+  
+  .tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: #555;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+    position: absolute;
+    z-index: 1;
+    bottom: 125%;
+    left: 50%;
+    margin-left: -60px;
+    opacity: 0;
+    transition: opacity 0.3s;
+  }
+  
+  .tooltip .tooltiptext::after {
+    content: "";
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    margin-left: -5px;
+    border-width: 5px;
+    border-style: solid;
+    border-color: #555 transparent transparent transparent;
+  }
+  
+  .tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+  }
