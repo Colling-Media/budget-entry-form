@@ -144,6 +144,7 @@ button {
     text-align:center;
     z-index: 11 !important;
     position: fixed;
+    margin-top: 48px;
   }
 
   .modale:before, .confirmation-modale:before {
@@ -174,12 +175,12 @@ textarea:focus {
     height: 82px;
 }
 
-/* .tooltip {
+  .tooltip {
     position: relative;
     display: inline-block;
-    border-bottom: 1px dotted black;
+    /* border-bottom: 1px dotted black; */
   }
-   */
+
   .tooltip .tooltiptext {
     visibility: hidden;
     width: 120px;
