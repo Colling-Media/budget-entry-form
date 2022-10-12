@@ -180,7 +180,7 @@ textarea:focus {
     border-bottom: 1px dotted black;
   }
   
-  .tooltip .tooltiptext {
+  .tooltiptext {
     visibility: hidden;
     width: 120px;
     background-color: #555;
@@ -197,7 +197,7 @@ textarea:focus {
     transition: opacity 0.3s;
   }
   
-  .tooltip .tooltiptext::after {
+  .tooltiptext::after {
     content: "";
     position: absolute;
     top: 100%;
@@ -208,7 +208,7 @@ textarea:focus {
     border-color: #555 transparent transparent transparent;
   }
   
-  .tooltip:hover .tooltiptext {
+  .tooltip:hover, .tooltiptext {
     visibility: visible;
     opacity: 1;
   }
