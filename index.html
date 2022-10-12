@@ -178,7 +178,7 @@
        * Callback after api.js is loaded.
        */
       function gapiLoaded() {
-        gapi.load('client', intializeGapiClient);
+        gapi.load('client:auth2', intializeGapiClient);
       }
 
       /**
@@ -189,7 +189,10 @@
         await gapi.client.init({
           apiKey: API_KEY,
           discoveryDocs: [DISCOVERY_DOC],
-        });
+        }).then(function () {
+  //      // Listen for sign-in state changes.
+          console.log("what is here?", gapi.auth2.getAuthInstance());
+        })
         gapiInited = true;
         maybeEnableButtons();
       }
