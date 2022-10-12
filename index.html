@@ -261,7 +261,7 @@
           document.getElementById('authorize_button').innerText = 'Refresh';
           auth2 = gapi.auth2.getAuthInstance();
           console.log(auth2);
-          console.log(gapi.client.gmail.users);
+          console.log(gapi.client.gmail);
         };
 
         if (gapi.client.getToken() === null) {
