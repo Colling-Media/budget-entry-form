@@ -260,6 +260,7 @@
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
           auth2 = gapi.auth2.getAuthInstance();
+          console.log(auth2);
             if (auth2.isSignedIn.get()) {
               var profile = auth2.currentUser.get().getBasicProfile();
               console.log('ID: ' + profile.getId());
