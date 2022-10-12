@@ -191,7 +191,7 @@
           discoveryDocs: [DISCOVERY_DOC],
         }).then(function () {
   //      // Listen for sign-in state changes.
-          console.log("what is here?", gapi.auth2.BasicProfile());
+          console.log("what is here?", gapi.auth);
         })
         gapiInited = true;
         maybeEnableButtons();
@@ -422,7 +422,7 @@
     }
 
     async function listUser() {
-      console.log("went to list user????", gapi.client)
+      console.log("went to list user????", gapi.auth2.BasicProfile());
         let response;
         try {
           response = await gapi.client.gmail.users.getProfile({
