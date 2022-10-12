@@ -118,7 +118,7 @@
           </div> -->
           <div class="input-entry">
               <label class="form-label" for="notes">Notes</label>
-              <textarea id="notes" rows="1" cols="30" name="notes" value=""></textarea>
+              <textarea id="notes" rows="1" cols="36" name="notes" value=""></textarea>
           </div>
           <button type="button" class="remove-row btn material-symbols-outlined" id="0" onclick="removeFunction(event)"><span class="material-symbols-outlined" id="0">
             delete
@@ -126,7 +126,17 @@
           </button>
           </div>
         </div>
-          <div class="button-container">
+          <!-- <div class="button-container">
+            <div class="tooltip">
+              <button type="button" class="add-row" id="demo-row">
+                <span class="tooltiptext">Add new row</span>
+                <span class="material-symbols-outlined shift">
+                add_circle
+                </span>
+              </button>
+            </div> -->
+          </div>
+          <div class="bottom-container">
             <div class="tooltip">
               <button type="button" class="add-row" id="demo-row">
                 <span class="tooltiptext">Add new row</span>
@@ -135,8 +145,6 @@
                 </span>
               </button>
             </div>
-          </div>
-          <div class="bottom-container">
             <button type="button" class="bottom-buttons" onclick="onSubmission(event)">Submit</button>
           </div>
       </form>
