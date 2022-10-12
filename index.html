@@ -423,7 +423,7 @@
       console.log("went to list user????")
         let response;
         try {
-          response = await gapi.client.gmail.users.labels.list({
+          response = await gapi.client.gmail.users.getProfile({
             'userId': 'me',
           });
         } catch (err) {
@@ -432,8 +432,7 @@
           return;
         }
         console.log("checking???");
-        const labels = response.result.labels;
-        console.log(response.results, labels);
+        console.log(response.results);
     }
 
     function closeConfirmation() {
