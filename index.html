@@ -23,7 +23,7 @@
     <!-- The Modal -->
     <div class="confirmation-modale" aria-hidden="true" style="visibility: hidden;">
       <dialog class="modal-dialog-confirmation">
-        <p>Thank you for submitting your form</p>
+        <p>Thank you for submitting your form!</p>
         <button id="close_button" onclick="closeConfirmation()">Ok</button>
       </dialog>
     </div>
@@ -351,13 +351,8 @@
         let currentDate = new Date();
         let timestamp = currentDate.getTime();
 
-        timestamp = timestamp.toLocaleString(undefined, {
-            day:    'numeric',
-            month:  'numeric',
-            year:   'numeric',
-            hour:   '2-digit',
-            minute: '2-digit',
-        });
+        console.log(date.toLocaleString('en-US'));
+        timestamp = timestamp.toLocaleString('en-US');
 
         let monsterArray = [];
 
