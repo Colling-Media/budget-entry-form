@@ -418,8 +418,10 @@
       document.querySelector(".modal-dialog-confirmation").setAttribute('open', 'open');
       document.querySelector(".confirmation-modale").style.visibility = 'visible';
       document.querySelector(".budget-entry").reset();
-      let resetElement = document.querySelectorAll(".repeat-format");
-      resetElement.remove();
+      let addedRows = document.querySelectorAll(".repeat-format");
+      addedRows.forEach(row => {
+        row.remove();
+      })
     }
 
 
