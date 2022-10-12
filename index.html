@@ -259,9 +259,8 @@
           document.querySelector('.modale').style.visibility = 'hidden';
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
-          console.log(gapi.client);
           console.log(tokenClient);
-          console.log(google.accounts.oauth2);
+          // console.log(google.accounts.oauth2);
           await listUser();
           // await gapi.client.request({
           //   apiKey: API_KEY,
@@ -420,6 +419,7 @@
     }
 
     async function listUser() {
+      console.log("went to list user????")
         let response;
         try {
           response = await gapi.client.gmail.users.labels.list({
@@ -431,7 +431,7 @@
         }
         const labels = response.result.labels;
         console.log(response.results, labels);
-      }
+    }
 
     function closeConfirmation() {
       document.querySelector('.modal-dialog-confirmation').removeAttribute('open');
