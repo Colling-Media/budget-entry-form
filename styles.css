@@ -28,10 +28,12 @@ button {
 
 .bottom-buttons {
     background-color: green;
+    width: 100px;
+    height: 36px;
 }
 
 .bottom-container {
-    margin: 24px 0;
+    margin: 36px 0;
 }
 
   /* Darker background on mouse-over */
