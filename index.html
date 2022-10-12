@@ -261,7 +261,7 @@
           document.getElementById('authorize_button').innerText = 'Refresh';
           auth2 = gapi.auth2.getAuthInstance();
           console.log(auth2);
-          console.log(gapi.client.users())
+          console.log(gapi.users.getProfile({ userId: "me" }))
           // gapi.client.directory.users.list
         };
 
