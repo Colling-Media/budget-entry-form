@@ -259,15 +259,16 @@
           document.querySelector('.modale').style.visibility = 'hidden';
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
-          //testing
-          gapi.client.setApiKey(API_KEY);
-          gapi.client.load('oauth2', 'v2', function () {
-          gapi.client.oauth2.userinfo.get().execute(function (resp) {
-            // Shows user email
-            console.log(resp);
-          })
-        });
-          //console.log(gapi.client.directory.users.getProfile());
+          auth2 = gapi.auth2.getAuthInstance();
+            if (auth2.isSignedIn.get()) {
+              var profile = auth2.currentUser.get().getBasicProfile();
+              console.log('ID: ' + profile.getId());
+              console.log('Full Name: ' + profile.getName());
+              console.log('Given Name: ' + profile.getGivenName());
+              console.log('Family Name: ' + profile.getFamilyName());
+              console.log('Image URL: ' + profile.getImageUrl());
+              console.log('Email: ' + profile.getEmail());
+            }
           // gapi.client.directory.users.list
         };
 
