@@ -147,7 +147,7 @@ button {
 }
 
 .shift {
-    margin-left: 4px;
+    margin-left: -4px;
 }
 
 textarea:focus {
