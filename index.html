@@ -179,10 +179,6 @@
        */
       function gapiLoaded() {
         gapi.load('client', intializeGapiClient);
-        gapi.client.plus.people.get({ userId: "me" }).execute(function(resp) {
-          // Shows profile information
-          console.log("prof???", resp);
-        });
       }
 
       /**
@@ -218,8 +214,19 @@
         if (gapiInited && gisInited) {
           //document.querySelector('dialog').setAttribute('open');
           //document.getElementById("authorization_modal").style.visibility = 'visible';
-          makeApiCall();
+          getUser();
         }
+      }
+
+      function getUser() {
+        gapi.client.setApiKey(API_KEY);
+        gapi.client.load("plus", "v1", function() {
+          gapi.client.plus.people.get({ userId: "me" }).execute(function(resp) {
+            // Shows profile information
+            console.log("went here???", resp);
+            makeApiCall();
+          });
+        });
       }
 
       function makeApiCall() {
