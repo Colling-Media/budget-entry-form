@@ -424,7 +424,7 @@
     }
 
     async function listUser() {
-      console.log("went to list user????", gapi.auth2.currentUser.get().getBasicProfile().getName());
+      console.log("went to list user????", gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName());
         let response;
         try {
           response = await gapi.client.gmail.users.getProfile({
