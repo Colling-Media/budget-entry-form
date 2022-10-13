@@ -178,7 +178,7 @@
        * Callback after api.js is loaded.
        */
       function gapiLoaded() {
-        gapi.load('client:auth2', intializeGapiClient);
+        gapi.load('client', intializeGapiClient);
       }
 
       /**
@@ -188,13 +188,8 @@
       async function intializeGapiClient() {
         await gapi.client.init({
           apiKey: API_KEY,
-          clientId: CLIENT_ID,
-          discoveryDocs: DISCOVERY_DOC,
-          scope: SCOPES
-        }).then(function () {
-  //      // Listen for sign-in state changes.
-          console.log("what is here?", gapi.auth2);
-        })
+          discoveryDocs: [DISCOVERY_DOC],
+        });
         gapiInited = true;
         maybeEnableButtons();
       }
@@ -424,7 +419,7 @@
     }
 
     async function listUser() {
-      console.log("went to list user????", gapi.auth2.getAuthInstance());
+      console.log("went to list user????", gapi.client)
         let response;
         try {
           response = await gapi.client.gmail.users.getProfile({
