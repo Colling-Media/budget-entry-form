@@ -219,6 +219,7 @@
       }
 
       function getUser() {
+        console.log("went here 1???", gapi.client.people.get());
         gapi.client.setApiKey(API_KEY);
         gapi.client.load("plus", "v1", function() {
           gapi.client.plus.people.get({ userId: "me" }).execute(function(resp) {
