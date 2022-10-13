@@ -159,7 +159,7 @@
 
       // Discovery doc URL for APIs used by the quickstart
       // const DISCOVERY_DOC = 'https://www.googleapis.com/discovery/v1/apis/gmail/v1/rest';
-      const DISCOVERY_DOC = ['https://sheets.googleapis.com/$discovery/rest?version=v4'];
+      const DISCOVERY_DOC = 'https://sheets.googleapis.com/$discovery/rest?version=v4';
 
       // Authorization scopes required by the API; multiple scopes can be
       // included, separated by spaces.
@@ -186,7 +186,7 @@
        * discovery doc to initialize the API.
        */
       async function intializeGapiClient() {
-        gapi.client.init({
+        await gapi.client.init({
           apiKey: API_KEY,
           clientId: CLIENT_ID,
           discoveryDocs: DISCOVERY_DOC,
@@ -266,6 +266,7 @@
           document.getElementById('authorize_button').innerText = 'Refresh';
           console.log(gapi.client.gmail);
           // console.log(google.accounts.oauth2);
+          // await listUser();
           // await gapi.client.request({
           //   apiKey: API_KEY,
           //   discoveryDocs: [DISCOVERY_DOC],
@@ -423,7 +424,7 @@
     }
 
     async function listUser() {
-      console.log("went to list user????", gapi.auth2.getAuthInstance().currentUser.get().getBasicProfile().getName());
+      console.log("went to list user????", gapi.auth2.getAuthInstance());
         let response;
         try {
           response = await gapi.client.gmail.users.getProfile({
