@@ -193,10 +193,28 @@
           scope: SCOPES
         }).then(function () {
   //      // Listen for sign-in state changes.
-          console.log("what is here?", gapi.auth2);
-        })
+          gapi.auth2.getAuthInstance().isSignedIn.listen(updateSigninStatus);
+          // Handle the initial sign-in state.
+         updateSigninStatus(gapi.auth2.getAuthInstance().isSignedIn.get());
+          authorizeButton.onclick = handleAuthClick;
+          signoutButton.onclick = handleSignoutClick;
+        }, function(error) {
+          console.log(JSON.stringify(error, null, 2));
+       });
         gapiInited = true;
         maybeEnableButtons();
+      }
+
+      function updateSigninStatus(isSignedIn) {
+        console.log("went to sign in status function???", isSignedIn);
+        // if (isSignedIn) {
+        //   authorizeButton.style.display = 'none';
+        //   signoutButton.style.display = 'block';
+        //   listUsers();
+        // } else {
+        //   authorizeButton.style.display = 'block';
+        //   signoutButton.style.display = 'none';
+        // }
       }
 
       /**
@@ -266,7 +284,6 @@
           document.getElementById('authorize_button').innerText = 'Refresh';
           console.log(gapi.client.gmail);
           // console.log(google.accounts.oauth2);
-          await listUser();
           // await gapi.client.request({
           //   apiKey: API_KEY,
           //   discoveryDocs: [DISCOVERY_DOC],
