@@ -214,7 +214,7 @@
         if (gapiInited && gisInited) {
           //document.querySelector('dialog').setAttribute('open');
           //document.getElementById("authorization_modal").style.visibility = 'visible';
-          getUser();
+          makeApiCall();
         }
       }
 
@@ -224,7 +224,6 @@
           gapi.client.plus.people.get({ userId: "me" }).execute(function(resp) {
             // Shows profile information
             console.log("went here???", resp);
-            makeApiCall();
           });
         });
       }
@@ -271,6 +270,7 @@
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
           console.log(gapi.client);
+          getUser();
           // console.log(google.accounts.oauth2);
           // await listUser();
           // await gapi.client.request({
