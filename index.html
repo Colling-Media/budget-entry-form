@@ -430,9 +430,11 @@
           return;
         }
         console.log("checking???");
-        console.log("the response", response);
+        console.log("the response", response.result.emailAddress);
         if (response) {
           console.log("did it go here???", response);
+          let currentUser = response.result.emailAddress
+          document.getElementById("email").value = currentUser;
         }
     }
 
