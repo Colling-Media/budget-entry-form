@@ -429,10 +429,7 @@
           console.log(err, err.message);
           return;
         }
-        console.log("checking???");
-        console.log("the response", response.result.emailAddress);
         if (response) {
-          console.log("did it go here???", response);
           let currentUser = response.result.emailAddress
           document.getElementById("email").value = currentUser;
         }
@@ -451,6 +448,7 @@
       addedRows.forEach(row => {
         row.remove();
       })
+      listUser();
     }
 
 
