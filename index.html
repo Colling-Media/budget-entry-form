@@ -222,7 +222,8 @@
         let response;
         try {
           // Fetch first 10 files
-          response = await gapi.client.people.get();
+          console.log(gapi.client.people);
+          response = await gapi.client.people;
         } catch (err) {
           console.log(err.message);
           return;
