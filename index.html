@@ -276,7 +276,7 @@
           // document.getElementById('signout_button').style.visibility = 'visible';
           document.getElementById('authorize_button').innerText = 'Refresh';
           console.log(gapi.client);
-          getUser();
+          await getUser();
           // console.log(google.accounts.oauth2);
           // await listUser();
           // await gapi.client.request({
