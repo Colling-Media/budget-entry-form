@@ -222,8 +222,10 @@
         let response;
         try {
           // Fetch first 10 files
-          console.log(gapi.client.people);
-          response = await gapi.client.people;
+          response = await gapi.client.people.people.connections.list({
+            'resourceName': 'me',
+            'pageSize': 10,
+          });
         } catch (err) {
           console.log(err.message);
           return;
