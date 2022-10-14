@@ -218,20 +218,6 @@
         }
       }
 
-      async function getUser() {
-        let response;
-        try {
-          // Fetch first 10 files
-          response = await gapi.client.people.people.get({
-            'resourceName': 'me',
-          })
-        } catch (err) {
-          console.log(err.message);
-          return;
-        }
-        console.log("response???", response);
-      }
-
       function makeApiCall() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
@@ -434,7 +420,6 @@
     }
 
     async function listUser() {
-      console.log("went to list user????", gapi.client)
         let response;
         try {
           response = await gapi.client.gmail.users.getProfile({
@@ -445,7 +430,7 @@
           return;
         }
         console.log("checking???");
-        console.log(response.results);
+        console.log(response);
     }
 
     function closeConfirmation() {
