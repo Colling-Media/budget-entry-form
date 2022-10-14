@@ -390,7 +390,7 @@
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
          // alert("Thank you for submitting this form!");
-         console.log(JSON.stringify(error, null, 2));
+        // console.log(JSON.stringify(error, null, 2));
           resetForm();
       } catch (err) {
           console.log(err);
