@@ -436,7 +436,9 @@
     }
 
     function formatCurrency(e) {
+      let input = document.querySelector("input[data-type='currency']");
       let input_val = document.querySelector("input[data-type='currency']").value;
+      
       // don't validate empty input
       if (input_val === "") { 
         return; 
