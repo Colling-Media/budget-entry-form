@@ -448,7 +448,7 @@
       var original_len = input_val.length;
 
       // initial caret position 
-      var caret_pos = input.setAttribute("selectionStart");
+      var caret_pos = input.value("selectionStart");
         
       // check for decimal
       if (input_val.indexOf(".") >= 0) {
