@@ -185,8 +185,8 @@ button {
 
 /* for the notes section */
 textarea:focus {
-    width: 555px;
-    height: 82px;
+    /* width: 555px;
+    height: 82px; */
 }
 
   .tooltip {
