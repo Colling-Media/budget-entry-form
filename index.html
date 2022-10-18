@@ -447,15 +447,19 @@
       inputArray.forEach((userItem) => {
         let input = userItem;
         let input_val = userItem.value;
-        // don't validate empty input
-        if (input_val === "") { 
-          return; 
-        }
+        currencyCalc(input, input_val);
       });
+    }
 
+    function currencyCalc(input, input_val) {
+
+      // don't validate empty input
+      if (input_val === "") { 
+        return; 
+      }
       
       // original length
-      let original_len = input_val.length;
+      var original_len = input_val.length;
 
       // initial caret position 
       // var caret_pos = input.prop("selectionStart");
