@@ -333,8 +333,8 @@
 
       async function onSubmission(event) {
         let formElement = document.getElementById("theForm");
-        let budget_val = document.querySelectorAll("input[data-type='currency']").value;
-        console.log(budget_val);
+        //let budget_val = document.querySelectorAll("input[data-type='currency']").value;
+        //console.log(budget_val);
         //let budgetNumber = Number(budget_val.replace(/[^0-9\.-]+/g,""));
         const url = theForm.action;
         const params = {
@@ -370,7 +370,7 @@
         let entryNumber = formDataObj.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
-          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], "", formDataObj.budget[i], "", "", formDataObj.notes[i]]);
+          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], "", Number(formDataObj.budget[i].replace(/[^0-9\.-]+/g,"")), "", "", formDataObj.notes[i]]);
         }
 
         // for (let i = 0; i < entryNumber; i++) {
@@ -441,8 +441,11 @@
 
     function formatCurrency(e) {
       console.log("went to format currency???");
-      let input = document.querySelector("input[data-type='currency']");
-      let input_val = document.querySelector("input[data-type='currency']").value;
+      let input = document.querySelectorAll("input[data-type='currency']");
+      let input_val = document.querySelectorAll("input[data-type='currency']").value;
+
+      console.log("input?", input, input_val);
+      return;
 
       // don't validate empty input
       if (input_val === "") { 
