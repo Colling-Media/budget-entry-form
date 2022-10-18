@@ -503,7 +503,7 @@
 
     function test() {
       let input_val = document.querySelector("input[data-type='currency']").value;
-      input_value = input_val += ".00";
+      document.querySelector("input[data-type='currency']").value = input_val += ".00";
       console.log("input value", input_val);
     }
     
