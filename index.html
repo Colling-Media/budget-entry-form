@@ -440,16 +440,14 @@
     }
 
     function formatCurrency(e) {
-      console.log("went to format currency???");
+      // console.log("went to format currency???");
+      // let input = document.querySelectorAll("input[data-type='currency']");
+      // let input_val = document.querySelector("input[data-type='currency']").value;
       let inputArray = document.querySelectorAll("input[data-type='currency']");
       inputArray.forEach((userItem) => {
-        console.log("what is here????", userItem.value);
+        let input = userItem;
+        let input_val = userItem.value;
       });
-     // let input_val_Array = document.querySelectorAll("input[data-type='currency']").value;
-
-
-      console.log("input?", input, input_val);
-      return;
 
       // don't validate empty input
       if (input_val === "") { 
