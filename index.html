@@ -441,8 +441,12 @@
 
     function formatCurrency(e) {
       console.log("went to format currency???");
-      let input = document.querySelectorAll("input[data-type='currency']");
-      let input_val = document.querySelectorAll("input[data-type='currency']").value;
+      let inputArray = document.querySelectorAll("input[data-type='currency']").value;
+      inputArray.forEach((userItem) => {
+        console.log("what is here????", userItem);
+      });
+      let input_val_Array = document.querySelectorAll("input[data-type='currency']").value;
+
 
       console.log("input?", input, input_val);
       return;
