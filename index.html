@@ -500,6 +500,11 @@
       //caret_pos = updated_len - original_len + caret_pos;
       // input[0].setSelectionRange(caret_pos, caret_pos);
     }
+    
+    function formatNumber(n) {
+      // format number 1000000 to 1,234,567
+      return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+    }
 
     function closeConfirmation() {
       document.querySelector('.modal-dialog-confirmation').removeAttribute('open');
