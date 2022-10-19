@@ -221,10 +221,10 @@
       function makeApiCall() {
       var params = {
         // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: '1024aK6jQVUOEkOEl9wS9ZNzE8yQZvec1qVjidm0n4qc',  // TODO: Update placeholder value.
+        spreadsheetId: SPREADSHEET_ID,  // TODO: Update placeholder value.
 
         // The A1 notation of the values to retrieve.
-        range: 'Lookup Table - Accounts'
+        range: 'lookup table - accounts'
       };
 
       var request = gapi.client.sheets.spreadsheets.values.get(params);
@@ -336,7 +336,7 @@
         const url = theForm.action;
         const params = {
             spreadsheetId: SPREADSHEET_ID,
-            range: 'Sheet1',
+            range: 'budget entries',
            // valueInputOption: 'RAW',
            // insertDataOption: 'INSERT_ROWS',
         };
