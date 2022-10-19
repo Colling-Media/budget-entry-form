@@ -118,7 +118,7 @@
           </div> -->
           <div class="input-entry">
               <label class="form-label" for="notes">Notes</label>
-              <textarea id="notes" rows="1" cols="65" name="notes" value=""></textarea>
+              <textarea id="notes" rows="1" cols="48" name="notes" value=""></textarea>
           </div>
           <button type="button" class="remove-row btn material-symbols-outlined" id="0" onclick="removeFunction(event)"><span class="material-symbols-outlined" id="0">
             delete
@@ -308,7 +308,7 @@
 
           // console.log("what is this?", addOrder);
           document.getElementById("repeat-row" + addOrder).insertAdjacentHTML('afterend',
-          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source *</label><select name="sourceNames" id="sourceNames" required="true"><option value="apple">apple</option><option value="bing">bing</option><option value="colling media">colling media</option><option value="cox media">cox media</option><option value="facebook">facebook</option><option value="google">google</option><option value="linkedin">linkedin</option><option value="snapchat">snapchat</option><option value="tiktok">tiktok</option><option value="tradedesk">tradedesk</option><option value="other">other</option></select></div><div class="input-entry"><label for="mediaType">Product/Service *</label><select name="mediaType" id="mediaType" required="true"><option value="not set">not set</option><option value="audio ads">audio ads</option><option value="app install ads">app install ads</option><option value="display ads">display ads</option><option value="call only ads">call only ads</option><option value="conversion ads">conversion ads</option><option value="lead ads">lead ads</option><option value="organic social">organic social</option><option value="outdoor ads">outdoor ads</option><option value="performance max ads">performance max ads</option><option value="post engagement ads">post engagement ads</option><option value="radio ads">radio ads</option><option value="retainer fee">retainer fee</option><option value="reach ads">reach ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="shopping ads">shopping ads</option><option value="traffic ads">traffic ads</option><option value="video ads">video ads</option><option value="video ads - cable tv">video ads - cable tv</option><option value="website maintenance">website maintenance</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget *</label><input type="text" id="budget" name="budget" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" required="true" data-type="currency" placeholder="$10,000.00" onkeyup="formatCurrency(event)" onblur="test(event)"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="65"></textarea></div><button type="button" class="remove-row btn" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined" id=' + CountButtonClicks + '>delete</span></button></div></div></div>');
+          '<div class="repeat-format" id=repeat-row' + CountButtonClicks + '><div class="repeat-format form-line" id=repeat' + CountButtonClicks + '><div class="input-entry"><label for="sourceNames">Source *</label><select name="sourceNames" id="sourceNames" required="true"><option value="apple">apple</option><option value="bing">bing</option><option value="colling media">colling media</option><option value="cox media">cox media</option><option value="facebook">facebook</option><option value="google">google</option><option value="linkedin">linkedin</option><option value="snapchat">snapchat</option><option value="tiktok">tiktok</option><option value="tradedesk">tradedesk</option><option value="other">other</option></select></div><div class="input-entry"><label for="mediaType">Product/Service *</label><select name="mediaType" id="mediaType" required="true"><option value="not set">not set</option><option value="audio ads">audio ads</option><option value="app install ads">app install ads</option><option value="display ads">display ads</option><option value="call only ads">call only ads</option><option value="conversion ads">conversion ads</option><option value="lead ads">lead ads</option><option value="organic social">organic social</option><option value="outdoor ads">outdoor ads</option><option value="performance max ads">performance max ads</option><option value="post engagement ads">post engagement ads</option><option value="radio ads">radio ads</option><option value="retainer fee">retainer fee</option><option value="reach ads">reach ads</option><option value="search ads">search ads</option><option value="seo">seo</option><option value="shopping ads">shopping ads</option><option value="traffic ads">traffic ads</option><option value="video ads">video ads</option><option value="video ads - cable tv">video ads - cable tv</option><option value="website maintenance">website maintenance</option></select></div><div class="input-entry"><label class="form-label" for="campaign">Campaign</label><input type="text" id="campaign" name="campaign"></div><div class="input-entry"><label class="form-label" for="budget">Budget *</label><input type="text" id="budget" name="budget" pattern="^\$\d{1,3}(,\d{3})*(\.\d+)?$" value="" required="true" data-type="currency" placeholder="$10,000.00" onkeyup="formatCurrency(event)" onblur="test(event)"></div><div class="input-entry"><label class="form-label" for="notes">Notes</label><textarea id="notes" name="notes" rows="1" cols="48"></textarea></div><button type="button" class="remove-row btn" id=' + CountButtonClicks + ' onclick="removeFunction(event)"><span class="material-symbols-outlined" id=' + CountButtonClicks + '>delete</span></button></div></div></div>');
       }
 
       //with campaign and primary goals!!!
@@ -333,9 +333,6 @@
 
       async function onSubmission(event) {
         let formElement = document.getElementById("theForm");
-        //let budget_val = document.querySelectorAll("input[data-type='currency']").value;
-        //console.log(budget_val);
-        //let budgetNumber = Number(budget_val.replace(/[^0-9\.-]+/g,""));
         const url = theForm.action;
         const params = {
             spreadsheetId: SPREADSHEET_ID,
@@ -351,7 +348,6 @@
         formDataObj['mediaType'] = myFormData.getAll('mediaType');
         formDataObj.campaign = myFormData.getAll('campaign');
         formDataObj.budget = myFormData.getAll('budget');
-        // formDataObj.budget = budgetNumber;
         formDataObj['primaryGoal'] = myFormData.getAll('primaryGoal');
         formDataObj['primaryGoalCount'] = myFormData.getAll('primaryGoalCount');
         formDataObj.notes = myFormData.getAll('notes');
@@ -440,9 +436,6 @@
     }
 
     function formatCurrency(e) {
-      // console.log("went to format currency???");
-      // let input = document.querySelectorAll("input[data-type='currency']");
-      // let input_val = document.querySelector("input[data-type='currency']").value;
       let inputArray = document.querySelectorAll("input[data-type='currency']");
       inputArray.forEach((userItem) => {
         let input = userItem;
