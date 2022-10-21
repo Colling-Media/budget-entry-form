@@ -414,6 +414,9 @@
           resetForm();
       } catch (err) {
           console.log(err);
+          if (err) {
+            alert("Form was unable to submit, please refresh your page and try again.");
+          }
       }
 
     //  request = gapi.client.sheets.spreadsheets.values.append(params, formDataJsonString);
