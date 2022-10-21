@@ -336,7 +336,6 @@
         let inputValid = document.querySelectorAll("input");
         if (inputValid) {
           inputValid.forEach((userItem) => {
-            console.log("item", userItem.validity);
             if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true) {
               readyToSubmit = false;
               return;
