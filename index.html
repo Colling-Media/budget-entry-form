@@ -338,21 +338,20 @@
           inputValid.forEach((userItem) => {
             console.log("item", userItem.validity);
             if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true) {
-              console.log("went here????");
               readyToSubmit = false;
               return;
             }
           });
           if (readyToSubmit) {
-            console.log("about to submit")
-            onSubmission();
+            onSubmission(event);
           }
         }
       }
 
 
 
-      async function onSubmission(event) {
+      async function onSubmission(e) {
+        e.preventDefault();
         let formElement = document.getElementById("theForm");
         const url = theForm.action;
         const params = {
