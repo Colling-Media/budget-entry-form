@@ -39,7 +39,7 @@
               <label class="form-label" for="account">Account *</label>
               <select name="account" id="account" required="true">
                 <!-- Get options function -->
-                <option class="select1" value="Account">Account</option>
+                <option class="select1" value="">Account</option>
             </select>
           </div>
           <div class="input-entry">
@@ -174,6 +174,7 @@
       //document.querySelector('dialog').removeAttribute('open');
       // document.getElementById('signout_button').style.visibility = 'hidden';
 
+    
       /**
        * Callback after api.js is loaded.
        */
@@ -332,7 +333,13 @@
 
       function validateForm(event) {
         console.log("do the validation???");
-        onSubmission();
+
+        let inputValid = document.querySelectorAll("invalid");
+        inputValid.forEach((userItem) => {
+          console.log("testing what is here???", userItem);
+        });
+        return;
+        //onSubmission();
       }
 
 
