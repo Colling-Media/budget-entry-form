@@ -333,14 +333,16 @@
 
       function validateForm(event) {
         let inputValid = document.querySelectorAll("input");
-        inputValid.forEach((userItem) => {
-          console.log("item", userItem.validity);
-          if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true) {
-            console.log("went here????");
-            return;
-          }
-        });
-        onSubmission();
+        if (inputValid) {
+          inputValid.forEach((userItem) => {
+            console.log("item", userItem.validity);
+            if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true) {
+              console.log("went here????");
+              return;
+            }
+          });
+            onSubmission();
+        }
       }
 
 
