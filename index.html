@@ -135,7 +135,7 @@
           </button>
         </div>
         <div class="bottom-container">
-          <button type="button" class="bottom-buttons" onclick="onSubmission(event)">Submit</button>
+          <button type="button" class="bottom-buttons" onclick="validateForm(event)">Submit</button>
         </div>
       </div>
       </form>
@@ -329,6 +329,12 @@
           return;
         }
       }
+
+      function validateForm(event) {
+        console.log("do the validation???");
+        onSubmission();
+      }
+
 
 
       async function onSubmission(event) {
