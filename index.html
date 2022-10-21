@@ -332,14 +332,13 @@
       }
 
       function validateForm(event) {
-        console.log("do the validation???");
-
         let inputValid = document.querySelectorAll("input");
         inputValid.forEach((userItem) => {
-          console.log("testing what is here???", userItem.validity);
+          if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true) {
+            return
+          }
         });
-        return;
-        //onSubmission();
+        onSubmission();
       }
 
 
