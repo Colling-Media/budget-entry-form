@@ -199,6 +199,7 @@
        * Callback after Google Identity Services are loaded.
        */
       function gisLoaded() {
+        console.log("token is heres????", tokenClient);
         tokenClient = google.accounts.oauth2.initTokenClient({
           client_id: CLIENT_ID,
           scope: SCOPES,
