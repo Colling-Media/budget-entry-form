@@ -333,19 +333,16 @@
 
       function validateForm(event) {
         let inputValid = document.querySelectorAll("input");
-        if (inputValid) {
-          inputValid.forEach((userItem) => {
-            console.log("item", userItem.validity);
-            if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true) {
+        for (let i = 0; i < inputValid.length; i++) {
+          let userItem = inputValid[i];
+          if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true) {
               console.log("went here????");
               return;
-            }
-          });
-            onSubmission();
+          }
         }
+        console.log("about to submit???");
+        onSubmission();
       }
-
-
 
       async function onSubmission(event) {
         let formElement = document.getElementById("theForm");
