@@ -229,7 +229,7 @@ textarea:focus {
   }
 
   ::-webkit-calendar-picker-indicator{
-    margin-left: -15px;
+    margin-left: -128px;
 }
 
 
