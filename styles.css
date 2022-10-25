@@ -228,8 +228,12 @@ textarea:focus {
     opacity: 1;
   }
 
-  ::-webkit-calendar-picker-indicator{
-    margin-left: -128px;
-}
+  input::-webkit-calendar-picker-indicator {
+    position: absolute;
+    top: 3px;
+    right: 0;
+    color: black;
+    opacity: 1;
+  }
 
 
