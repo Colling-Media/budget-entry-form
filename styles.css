@@ -134,6 +134,7 @@ button {
 
 #notes, #startDate, #endDate {
     font-family: Arial, Helvetica, sans-serif;
+    width: 408px;
 }
 
 .input-entry {
