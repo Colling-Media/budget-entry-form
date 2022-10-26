@@ -136,7 +136,8 @@
             add_circle
             </span>
           </button>
-          <button onclick="resetForm(event)">Clear</button>
+          <br>
+          <button type="button" onclick="resetForm(event)">Clear</button>
         </div>
         <div class="bottom-container">
           <button type="submit" class="bottom-buttons" onclick="validateForm(event)">Submit</button>
@@ -440,6 +441,8 @@
          // return res.json();
       //  })
        // .then((res) => console.log(res));
+       document.querySelector(".modal-dialog-confirmation").setAttribute('open', 'open');
+       document.querySelector(".confirmation-modale").style.visibility = 'visible';
     }
 
     async function listUser() {
@@ -542,8 +545,6 @@
     }
 
     function resetForm() {
-      document.querySelector(".modal-dialog-confirmation").setAttribute('open', 'open');
-      document.querySelector(".confirmation-modale").style.visibility = 'visible';
       document.querySelector(".budget-entry").reset();
       let addedRows = document.querySelectorAll(".repeat-format");
       addedRows.forEach(row => {
