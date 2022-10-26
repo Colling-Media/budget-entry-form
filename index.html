@@ -136,6 +136,7 @@
             add_circle
             </span>
           </button>
+          <button onclick="resetForm(event)">Clear</button>
         </div>
         <div class="bottom-container">
           <button type="submit" class="bottom-buttons" onclick="validateForm(event)">Submit</button>
@@ -411,8 +412,8 @@
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
          // alert("Thank you for submitting this form!");
-        // console.log(JSON.stringify(error, null, 2));
-          resetForm();
+         // console.log(JSON.stringify(error, null, 2));
+         // resetForm();
       } catch (err) {
           alert("Form was unable to submit, please refresh your page and try again.");
           console.log(err);
