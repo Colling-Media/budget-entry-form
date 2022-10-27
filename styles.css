@@ -27,15 +27,18 @@ button {
 }
 
 .bottom-buttons {
-    background-color: green;
     width: 100px;
     height: 36px;
+}
+
+button[type=submit] {
+    background-color: green;
 }
 
 .bottom-container {
     margin-top: 32px;
     display: flex;
-    justify-content: flex-end;
+    justify-content: space-between;
 }
 
   /* Darker background on mouse-over */
