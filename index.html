@@ -375,11 +375,11 @@
         formDataObj.notes = myFormData.getAll('notes');
 
         //for time conversion mm/dd/yyyy
-        const [year, month, day] = formDataObj.startDate.split('-');
-        const startDateFormatted = [month, day, year].join('');
+        // const [year, month, day] = formDataObj.startDate.split('-');
+        // const startDateFormatted = [month, day, year].join('/');
 
-         const [y, m, da] = formDataObj.endDate.split('-');
-         const endDateFormatted = [m, da, y].join('');
+        // const [y, m, da] = formDataObj.endDate.split('-');
+        // const endDateFormatted = [m, da, y].join('/');
 
         const formDataJsonString = JSON.stringify(formDataObj)
         const valueRangeBody = {
@@ -395,7 +395,7 @@
         let entryNumber = formDataObj.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
-          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, startDateFormatted, endDateFormatted, formDataObj.sourceNames[i], formDataObj.mediaType[i], "", Number(formDataObj.budget[i].replace(/[^0-9\.-]+/g,"")), "", "", formDataObj.notes[i]]);
+          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], "", Number(formDataObj.budget[i].replace(/[^0-9\.-]+/g,"")), "", "", formDataObj.notes[i]]);
         }
 
         // for (let i = 0; i < entryNumber; i++) {
