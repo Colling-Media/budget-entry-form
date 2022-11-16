@@ -472,7 +472,6 @@
       inputArray.forEach((userItem) => {
         let input = userItem;
         let input_val = userItem.value;
-        console.log("input_val=", userItem.value);
         currencyCalc(input, input_val);
       });
     }
@@ -523,9 +522,8 @@
         // no decimal entered
         // add commas to number
         // remove all non-digits
-        console.log("about to go to format number");
         input_val = formatNumber(input_val);
-      //  input_val = "$" + input_val;
+        // input_val = "$" + input_val;
         
         // final formatting
         if (blur === "blur") {
@@ -535,7 +533,6 @@
       
       // send updated string to input
       input.value = input_val;
-      console.log("what is here", input.value);
 
       // put caret back in the right position
       var updated_len = input_val.length;
@@ -545,17 +542,14 @@
     
     function formatNumber(n) {
       // format number 1000000 to 1,234,567
-      let sign = n.charAt(0);
-      let returnValue = n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
-      if (sign == '-')
-        {
-          let newValue = '$'+'-'+returnValue;
-          return newValue;
-        }
-        else {
-          let newValue = '$'+returnValue;
-          return newValue;
-        }
+      let sign = value.charAt(0);
+      let initialValue = n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      if (sign == "-") {
+        return "-"+"$"+initialValue
+      }
+      else {
+        return "$"+initialValue;
+      }
     }
 
     function closeConfirmation() {
