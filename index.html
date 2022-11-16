@@ -395,7 +395,7 @@
         let entryNumber = formDataObj.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
-          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, startDateFormatted, endDateFormatted, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], Number(formDataObj.budget[i].replace(/[^0-9\.]+/g,"")), "", "", formDataObj.notes[i]]);
+          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, startDateFormatted, endDateFormatted, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], Number(formDataObj.budget[i].replace(/[^0-9\.-]+/g,"")), "", "", formDataObj.notes[i]]);
         }
 
         // for (let i = 0; i < entryNumber; i++) {
@@ -542,7 +542,15 @@
     
     function formatNumber(n) {
       // format number 1000000 to 1,234,567
-      return n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      let sign = n.charAt(0);
+      console.log(sign);
+      let returnValue = n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+      if (sign == '-')
+        {
+            $return = '-'+returnValue;
+        }
+
+      return returnValue;
     }
 
     function closeConfirmation() {
