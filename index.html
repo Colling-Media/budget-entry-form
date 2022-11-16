@@ -546,13 +546,12 @@
       let returnValue = n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       if (sign == '-')
         {
-            console.log(returnValue);
-            returnValue = '-'+returnValue;
-            console.log(returnValue);
-            return returnValue
+            let newValue = '-'+returnValue;
         }
-
-      // return returnValue;
+        else {
+          let newValue = returnValue;
+        }
+      return newValue;
     }
 
     function closeConfirmation() {
