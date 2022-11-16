@@ -546,6 +546,7 @@
       let returnValue = n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       if (sign == '-')
         {
+            console.log(returnValue);
             returnValue = '-'+returnValue;
             console.log(returnValue);
             return returnValue
