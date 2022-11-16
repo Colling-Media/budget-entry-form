@@ -549,11 +549,11 @@
       let returnValue = n.replace(/\D/g, "").replace(/\B(?=(\d{3})+(?!\d))/g, ",");
       if (sign == '-')
         {
-          let newValue = '-'+returnValue;
+          let newValue = '$'+'-'+returnValue;
           return newValue;
         }
         else {
-          let newValue = returnValue;
+          let newValue = '$'+returnValue;
           return newValue;
         }
     }
