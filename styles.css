@@ -256,6 +256,7 @@ button[type=submit] {
     right: 0;
     bottom: 0;
     background-color: #ccc;
+    border: 2px solid red;
     -webkit-transition: .4s;
     transition: .4s;
   }
