@@ -277,17 +277,17 @@ button[type=submit] {
     background-color: #2196F3;
   }
   
-  input:checked + .budget-toggle {
+  .toggle:checked + .budget-toggle {
     background-color: #ccc;
     border: 2px solid red;
   }
 
-  input:checked + .goal-toggle {
+  .toggle:checked + .goal-toggle {
     box-shadow: 0 0 1px #2196F3;
     border: 2px solid red;
   }
 
-  input:checked + .budget-entry {
+  .toggle:checked + .budget-entry {
     display: none;
   }
   

@@ -33,7 +33,7 @@
         <p class="budget-toggle">budget entry form</p>
         <!-- Rounded switch -->
         <label class="switch">
-          <input type="checkbox">
+          <input class="toggle" type="checkbox" onclick="toggleEvent(event)">
           <span class="slider round"></span>
         </label>
         <p class="goal-toggle"></p>goal entry form</p>
@@ -572,6 +572,11 @@
         row.remove();
       })
       listUser();
+    }
+
+    function toggleEvent(e) {
+      console.log(e);
+      console.log("what is this value?", document.querySelector(".toggle").checked)
     }
 
 
