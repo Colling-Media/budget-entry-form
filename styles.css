@@ -278,10 +278,12 @@ button[type=submit] {
   
   input:checked + .budget-toggle {
     background-color: #ccc;
+    border: 2px solid red;
   }
 
   input:checked + .goal-toggle {
     box-shadow: 0 0 1px #2196F3;
+    border: 2px solid red;
   }
 
   input:checked + .budget-entry {
