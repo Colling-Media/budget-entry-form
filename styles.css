@@ -88,6 +88,7 @@ button[type=submit] {
 	border-radius: 8px;
     display: flex;
     justify-content: center;
+    flex-direction: column;
 }
 
 .form-style-5 select{
@@ -256,7 +257,6 @@ button[type=submit] {
     right: 0;
     bottom: 0;
     background-color: #ccc;
-    border: 2px solid red;
     -webkit-transition: .4s;
     transition: .4s;
   }
