@@ -30,13 +30,15 @@
 
     <div class="wrapper form-style-5">
       <div class="toggle-div">
-        <p class="budget-toggle">budget entry form</p>
-        <!-- Rounded switch -->
-        <label class="switch">
-          <input class="toggle" type="checkbox" onclick="toggleEvent(event)">
-          <span class="slider round"></span>
-        </label>
-        <p class="goal-toggle"></p>goal entry form</p>
+        <div class="toggle-container">
+          <p class="budget-toggle">budget entry form</p>
+          <!-- Rounded switch -->
+          <label class="switch">
+            <input class="toggle" type="checkbox" onclick="toggleEvent(event)">
+            <span class="slider round"></span>
+          </label>
+          <p class="goal-toggle">goal entry form</p>
+        </div>
       </div>
       <h1 class="goal-entry" style="display: none;">TESTING OTHER FORM</h1>
       <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
@@ -582,13 +584,12 @@
         document.querySelector(".budget-entry").style.display = "none";
         document.querySelector(".goal-entry").style.display = "block";
         document.querySelector(".budget-toggle").style.color = "black";
-        document.querySelector(".goal-toggle").style.color = "blue";
-        document.querySelector(".goal-toggle").style.color = "red"
+        document.querySelector(".goal-toggle").style.color = "#2196F3";
       }
       else {
         document.querySelector(".budget-entry").style.display = "block";
         document.querySelector(".goal-entry").style.display = "none";
-        document.querySelector(".budget-toggle").style.color = "blue";
+        document.querySelector(".budget-toggle").style.color = "#2196F3";
         document.querySelector(".goal-toggle").style.color = "black"
       }
     }

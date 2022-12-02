@@ -292,10 +292,18 @@ button[type=submit] {
     border-radius: 50%;
   }
 
+  .toggle-container {
+    width: 320px;
+    border-radius: 24px;
+  }
+
   .toggle-div {
     display: flex;
     align-items: center;
+    justify-content: center;
+    font-family: arial;
   }
+  
 
 
 
