@@ -586,8 +586,7 @@
         document.querySelector(".goal-entry").style.display = "block";
         document.querySelector(".budget-toggle").style.color = "black";
         document.querySelector(".goal-toggle").style.color = "#2196F3";
-        let extern = document.getElementsByTagName("link")[0].import;
-        console.log(extern);
+        addForm();
       }
       else {
         document.querySelector(".budget-entry").style.display = "block";
@@ -595,6 +594,12 @@
         document.querySelector(".budget-toggle").style.color = "#2196F3";
         document.querySelector(".goal-toggle").style.color = "black"
       }
+    }
+
+    async function addForm() {
+      const resp = await fetch("goal-form.html");
+      const html = await resp.text();
+      document.body.insertAdjacentHTML("beforeend", html);    
     }
 
 
