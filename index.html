@@ -4,6 +4,7 @@
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
     <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+    <link href="goal-form.html" rel="import" />
     <title>Budget Entry Sheet</title>
     <meta charset="utf-8" />
   </head>
@@ -585,15 +586,13 @@
         document.querySelector(".goal-entry").style.display = "block";
         document.querySelector(".budget-toggle").style.color = "black";
         document.querySelector(".goal-toggle").style.color = "#2196F3";
-        document.querySelector(".goal-toggle").style.fontWeight = "600";
-        document.querySelector(".budget-toggle").style.fontWeight = "400"
+        let extern = document.getElementsByTagName("link")[0].import;
+        console.log(extern);
       }
       else {
         document.querySelector(".budget-entry").style.display = "block";
         document.querySelector(".goal-entry").style.display = "none";
         document.querySelector(".budget-toggle").style.color = "#2196F3";
-        document.querySelector(".budget-toggle").style.fontWeight = "600";
-        document.querySelector(".goal-toggle").style.fontWeight = "400";
         document.querySelector(".goal-toggle").style.color = "black"
       }
     }
