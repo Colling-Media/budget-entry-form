@@ -599,7 +599,7 @@
     async function addForm() {
       const resp = await fetch("goal-form.html");
       const html = await resp.text();
-      document.body.insertAdjacentHTML("beforeend", html);    
+      document.querySelector(".goal-entry").insertAdjacentHTML("afterend", html);    
     }
 
 
