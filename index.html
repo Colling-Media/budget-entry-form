@@ -31,7 +31,7 @@
     <div class="wrapper form-style-5">
       <div class="toggle-div">
         <div class="toggle-container">
-          <p class="budget-toggle">budget entry form</p>
+          <p class="budget-toggle" style="color: #2196F3;">budget entry form</p>
           <!-- Rounded switch -->
           <label class="switch">
             <input class="toggle" type="checkbox" onclick="toggleEvent(event)">
@@ -585,11 +585,13 @@
         document.querySelector(".goal-entry").style.display = "block";
         document.querySelector(".budget-toggle").style.color = "black";
         document.querySelector(".goal-toggle").style.color = "#2196F3";
+        document.querySelector(".goal-toggle").style.fontWeight = "600";
       }
       else {
         document.querySelector(".budget-entry").style.display = "block";
         document.querySelector(".goal-entry").style.display = "none";
         document.querySelector(".budget-toggle").style.color = "#2196F3";
+        document.querySelector(".budget-toggle").style.fontWeight = "600";
         document.querySelector(".goal-toggle").style.color = "black"
       }
     }

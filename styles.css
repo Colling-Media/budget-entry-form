@@ -294,7 +294,6 @@ button[type=submit] {
   
   .budget-toggle, .goal-toggle {
     margin: 0 4px;
-    font-weight: 600;
   }
 
   .toggle-container {
