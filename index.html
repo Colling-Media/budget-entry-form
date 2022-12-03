@@ -582,13 +582,11 @@
       let formBoolean = document.querySelector(".toggle").checked;
       if (formBoolean) {  
         document.querySelector(".budget-entry").style.display = "none";
-        document.querySelector(".goal-entry").style.display = "block";
         document.querySelector(".budget-toggle").style.color = "black";
         document.querySelector(".goal-toggle").style.color = "#2196F3";
         addForm();
       }
       else {
-        document.querySelector(".goal-entry").style.display = "none";
         document.querySelector(".budget-toggle").style.color = "#2196F3";
         document.querySelector(".goal-toggle").style.color = "black"
         removeForm();
@@ -597,7 +595,7 @@
 
     async function removeForm() {
       let removeForm = document.getElementById("goal-form");
-      removeForm.remove();   
+      removeForm.remove();
       document.querySelector(".budget-entry").style.display = "block";
     }
 
