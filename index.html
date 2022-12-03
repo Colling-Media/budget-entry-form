@@ -593,7 +593,13 @@
         document.querySelector(".goal-entry").style.display = "none";
         document.querySelector(".budget-toggle").style.color = "#2196F3";
         document.querySelector(".goal-toggle").style.color = "black"
+        removeForm();
       }
+    }
+
+    async function removeForm() {
+      let removeForm = document.getElementById("goal-form");
+      removeForm.remove();
     }
 
     async function addForm() {
