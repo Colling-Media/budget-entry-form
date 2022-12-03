@@ -598,9 +598,12 @@
     }
 
     async function removeForm() {
-      document.querySelector(".budget-entry").style.display = "block";
       let removeForm = document.getElementById("goal-form");
       removeForm.remove();
+      const resp = await fetch("index.html");
+      const html = await resp.text();
+      document.querySelector(".budget-entry").insertAdjacentHTML("afterend", html);    
+      document.querySelector(".budget-entry").style.display = "block";
     }
 
     async function addForm() {
