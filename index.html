@@ -589,7 +589,7 @@
         addForm();
       }
       else {
-        document.querySelector(".budget-entry").style.display = "block";
+        // document.querySelector(".budget-entry").style.display = "block";
         document.querySelector(".goal-entry").style.display = "none";
         document.querySelector(".budget-toggle").style.color = "#2196F3";
         document.querySelector(".goal-toggle").style.color = "black"
@@ -598,6 +598,7 @@
     }
 
     async function removeForm() {
+      document.querySelector(".budget-entry").style.display = "block";
       let removeForm = document.getElementById("goal-form");
       removeForm.remove();
     }
