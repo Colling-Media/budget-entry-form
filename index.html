@@ -41,7 +41,6 @@
           <p class="goal-toggle">goal entry form</p>
         </div>
       </div>
-      <h1 class="goal-entry" style="display: none;">TESTING OTHER FORM</h1>
       <form class="budget-entry" enctype="application/json" method="POST" action="https://script.google.com/macros/s/AKfycbwPzJ58T24pZ2wJUd9BdOPpXQqdQe70spCBtSpJY5rgN5uRNTUUQx9CicF7uMTfalA/exec?gid=1481718335" id="theForm">
         <div class="form-line">
           <div class="input-entry">
@@ -589,7 +588,6 @@
         addForm();
       }
       else {
-        // document.querySelector(".budget-entry").style.display = "block";
         document.querySelector(".goal-entry").style.display = "none";
         document.querySelector(".budget-toggle").style.color = "#2196F3";
         document.querySelector(".goal-toggle").style.color = "black"
@@ -599,17 +597,14 @@
 
     async function removeForm() {
       let removeForm = document.getElementById("goal-form");
-      removeForm.remove();
-      //const resp = await fetch("index.html");
-      //const html = await resp.text();
-      // document.querySelector(".budget-entry").insertAdjacentHTML("afterend", html);    
+      removeForm.remove();   
       document.querySelector(".budget-entry").style.display = "block";
     }
 
     async function addForm() {
       const resp = await fetch("goal-form.html");
       const html = await resp.text();
-      document.querySelector(".goal-entry").insertAdjacentHTML("afterend", html);    
+      document.querySelector(".toggle-div").insertAdjacentHTML("afterend", html);    
     }
 
 
