@@ -344,7 +344,9 @@
         console.log("went to validate goal form");
         let readyToSubmit = true
         let inputValid = document.querySelectorAll("input");
-        console.log(inputValid);
+        inputValid.forEach((userItem) => {
+          console.log(userItem);
+        });
       }
       
       function validateForm(event) {
