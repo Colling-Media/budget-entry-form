@@ -354,6 +354,7 @@
         let inputValid = document.querySelectorAll("input");
         if (inputValid) {
           inputValid.forEach((userItem) => {
+            console.log(userItem.value);
             if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign") {
               console.log(userItem);
               readyToSubmit = false;
@@ -370,10 +371,6 @@
               range: 'budget entries',
               valueInputOption: 'USER_ENTERED',
               insertDataOption: 'INSERT_ROWS',
-              resource: {
-                  "majorDimension": "ROWS",
-                  "values": monsterArray
-              },
             }
             onSubmission(event, params, request);
           }
@@ -438,6 +435,8 @@
         //  },
         //  auth: tokenClient,
    //   }
+
+      let request =request.resource = {"majorDimension": "ROWS", "values": monsterArray};
       
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
