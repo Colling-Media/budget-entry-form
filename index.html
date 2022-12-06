@@ -354,6 +354,7 @@
         let inputValid = document.querySelectorAll("input");
         if (inputValid) {
           inputValid.forEach((userItem) => {
+            console.log(userItem);
             if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign") {
               console.log(userItem);
               readyToSubmit = false;
