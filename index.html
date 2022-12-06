@@ -378,12 +378,12 @@
         e.preventDefault();
         let formElement = document.getElementById("theForm");
         const url = theForm.action;
-        const params = {
-            spreadsheetId: SPREADSHEET_ID,
-            range: 'budget entries',
+      //  const params = {
+         //   spreadsheetId: SPREADSHEET_ID,
+       //    range: 'budget entries',
            // valueInputOption: 'RAW',
            // insertDataOption: 'INSERT_ROWS',
-        };
+    //    };
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
         // formDataObj.account = myFormData.getAll('account');
