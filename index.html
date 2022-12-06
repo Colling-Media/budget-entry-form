@@ -236,22 +236,22 @@
       }
 
       function makeApiCall() {
-      var params = {
-        // The ID of the spreadsheet to retrieve data from.
-        spreadsheetId: SPREADSHEET_ID,  // TODO: Update placeholder value.
+        var params = {
+          // The ID of the spreadsheet to retrieve data from.
+          spreadsheetId: SPREADSHEET_ID,  // TODO: Update placeholder value.
 
-        // The A1 notation of the values to retrieve.
-        range: 'lookup table - accounts'
-      };
+          // The A1 notation of the values to retrieve.
+          range: 'lookup table - accounts'
+        };
 
-      var request = gapi.client.sheets.spreadsheets.values.get(params);
-      request.then(function(response) {
-        // TODO: Change code below to process the `response` object:
-        let accountArray = response.result.values;
-        setAccountDropdown(accountArray);
-      }, function(reason) {
-        console.error('error: ' + reason.result.error.message);
-      });
+        var request = gapi.client.sheets.spreadsheets.values.get(params);
+        request.then(function(response) {
+          // TODO: Change code below to process the `response` object:
+          let accountArray = response.result.values;
+          setAccountDropdown(accountArray);
+        }, function(reason) {
+          console.error('error: ' + reason.result.error.message);
+        });
     }
 
     function setAccountDropdown(accountArray) {
@@ -579,6 +579,7 @@
 
     function toggleEvent(e) {
       console.log(e);
+      gisLoaded();
       let formBoolean = document.querySelector(".toggle").checked;
       if (formBoolean) {  
         document.querySelector(".budget-entry").style.display = "none";
