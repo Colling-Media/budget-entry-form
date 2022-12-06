@@ -339,27 +339,11 @@
           return;
         }
       }
-      function validateGoalForm(event) {
-        let readyToSubmit = true
-        let inputValid = document.querySelectorAll("input");
-        console.log(inputValid);
-        if (inputValid) {
-          inputValid.forEach((userItem) => {
-            if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign" && userItem.id !== 'budget') {
-              console.log(userItem);
-              readyToSubmit = false;
-              return;
-            }
-          });
-          if (readyToSubmit) {
-            const params = {
-                spreadsheetId: SPREADSHEET_ID,
-                range: 'goal entries',
-              };
-              onSubmission(event, params);
-          }
-      }
 
+      function validateGoalForm(event) {
+        console.log("went to validate goal form");
+      }
+      
       function validateForm(event) {
         let readyToSubmit = true
         let inputValid = document.querySelectorAll("input");
@@ -372,27 +356,31 @@
             }
           });
           if (readyToSubmit) {
-              const params = {
-                spreadsheetId: SPREADSHEET_ID,
-                range: 'budget entries',
-              };
-              onSubmission(event, params);
+            let params = {
+              spreadsheetId: SPREADSHEET_ID,
+              range: 'budget entries',
+            };
+            let request = {
+              spreadsheetId: SPREADSHEET_ID,
+              range: 'budget entries',
+              valueInputOption: 'USER_ENTERED',
+              insertDataOption: 'INSERT_ROWS',
+              resource: {
+                  "majorDimension": "ROWS",
+                  "values": monsterArray
+              },
+            }
+            onSubmission(event, params, request);
           }
         }
       }
 
 
 
-      async function onSubmission(e) {
+      async function onSubmission(e, params) {
         e.preventDefault();
         let formElement = document.getElementById("theForm");
         const url = theForm.action;
-      //  const params = {
-         //   spreadsheetId: SPREADSHEET_ID,
-       //    range: 'budget entries',
-           // valueInputOption: 'RAW',
-           // insertDataOption: 'INSERT_ROWS',
-    //    };
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
         // formDataObj.account = myFormData.getAll('account');
@@ -432,19 +420,19 @@
         //   monsterArray.push([formDataObj.email, formDataObj.account, formDataObj.startDate, formDataObj.endDate, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i], formDataObj.primaryGoal[i], formDataObj.primaryGoalCount[i], formDataObj.notes[i]]);
         // }
 
-        const request = {
-          spreadsheetId: SPREADSHEET_ID,
-          range: 'budget entries',
-          valueInputOption: 'USER_ENTERED',
-          insertDataOption: 'INSERT_ROWS',
-          resource: {
-              "majorDimension": "ROWS",
-              "values": monsterArray
+       // const request = {
+        //  spreadsheetId: SPREADSHEET_ID,
+        //  range: 'budget entries',
+       //   valueInputOption: 'USER_ENTERED',
+        //  insertDataOption: 'INSERT_ROWS',
+        //  resource: {
+          //    "majorDimension": "ROWS",
+           //   "values": monsterArray
               //Needs to be sent to sheets in this format
               //[["Row 1 Col 1","Row 1 Col 2", "Row 1 Col 3", "Row 1 Col 4"], ["Row 2 Col 1","Row 2 Col 2"]]
-          },
+        //  },
         //  auth: tokenClient,
-      }
+   //   }
       
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
