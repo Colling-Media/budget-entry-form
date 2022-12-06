@@ -345,7 +345,11 @@
         let readyToSubmit = true
         let inputValid = document.querySelectorAll("input");
         inputValid.forEach((userItem) => {
-          console.log(userItem.value);
+          if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign" && userItem.id !== "budget") {
+              console.log(userItem);
+              console.log(userItem.value)
+              readyToSubmit = false;
+          }
         });
       }
       
@@ -354,7 +358,6 @@
         let inputValid = document.querySelectorAll("input");
         if (inputValid) {
           inputValid.forEach((userItem) => {
-            console.log(userItem.value);
             if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign") {
               console.log(userItem);
               readyToSubmit = false;
@@ -379,7 +382,7 @@
 
 
 
-      async function onSubmission(e, params) {
+      async function onSubmission(e, params, r) {
         e.preventDefault();
         let formElement = document.getElementById("theForm");
         const url = theForm.action;
@@ -436,7 +439,7 @@
         //  auth: tokenClient,
    //   }
 
-      let request =request.resource = {"majorDimension": "ROWS", "values": monsterArray};
+      let request = r.resource = {"majorDimension": "ROWS", "values": monsterArray};
       
       try {
           const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
