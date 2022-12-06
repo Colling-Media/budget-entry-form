@@ -102,14 +102,17 @@
       <button type="submit" class="bottom-buttons" onclick="validateForm(event)">Submit</button>
     </div>
   </div>
-  </form>
+</form>
 
   <script type="text/javascript">
 
-    document.getElementById("new-row").onclick = function() {addBudgetFunction()};
+    let CountButtonClicks = 0;
+
+    document.getElementById("new-row").onclick = function() {addGoalFunction()};
 
      
-    function addBudgetFunction() {
+    function addGoalFunction() {
+      console.log("went here????");
         CountButtonClicks += 1;
         let repeatNumber = CountButtonClicks - 1;
         let rowArray = document.querySelectorAll(".form-line")
