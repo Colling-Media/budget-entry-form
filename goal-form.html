@@ -90,7 +90,7 @@
       </div>
     </div>
     <div class="tooltip">
-      <button type="button" class="add-row" id="new-row">
+      <button type="button" class="add-row" id="new-row" onclick="addGoalFunction(e)">
         <span class="tooltiptext">Add new row</span>
         <span class="material-symbols-outlined shift">
         add_circle
@@ -108,10 +108,10 @@
 
     let CountButtonClicks = 0;
 
-    document.getElementById("new-row").onclick = function() {addGoalFunction()};
+    //document.getElementById("new-row").onclick = function() {addGoalFunction()};
 
      
-    function addGoalFunction() {
+    function addGoalFunction(e) {
       console.log("went here????");
         CountButtonClicks += 1;
         let repeatNumber = CountButtonClicks - 1;
