@@ -354,8 +354,20 @@
           if (readyToSubmit) {
             console.log("what is here??");
             console.log(formBoolean);
-            console.log(document.querySelector(".toggle").checked);
-            //onSubmission(event);
+            if (document.querySelector(".toggle").checked) {
+              const params = {
+                spreadsheetId: SPREADSHEET_ID,
+                range: 'goal entries',
+              };
+              onSubmission(event, params);
+            }
+            else {
+              const params = {
+                spreadsheetId: SPREADSHEET_ID,
+                range: 'budget entries',
+              };
+              onSubmission(event, params);
+            }
           }
         }
       }
