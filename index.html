@@ -345,7 +345,7 @@
         let readyToSubmit = true
         let inputValid = document.querySelectorAll("input");
         inputValid.forEach((userItem) => {
-          console.log(userItem);
+          console.log(userItem.value);
         });
       }
       
@@ -354,7 +354,6 @@
         let inputValid = document.querySelectorAll("input");
         if (inputValid) {
           inputValid.forEach((userItem) => {
-            console.log(userItem.value);
             if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign") {
               console.log(userItem);
               readyToSubmit = false;
