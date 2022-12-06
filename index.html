@@ -313,9 +313,10 @@
 
       let CountButtonClicks = 0;
 
-      document.getElementById("demo-row").onclick = function() {myFunction()};
+      document.getElementById("demo-row").onclick = function() {addBudgetFunction()};
+      document.getElementById("new-row").onclick = function() {addBudgetFunction()};
 
-      function myFunction() {
+      function addBudgetFunction() {
         CountButtonClicks += 1;
         let repeatNumber = CountButtonClicks - 1;
         let rowArray = document.querySelectorAll(".form-line")
@@ -580,6 +581,7 @@
     function toggleEvent(e) {
       console.log(e);
       gisLoaded();
+      resetForm();
       let formBoolean = document.querySelector(".toggle").checked;
       if (formBoolean) {  
         document.querySelector(".budget-entry").style.display = "none";
