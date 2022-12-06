@@ -339,6 +339,26 @@
           return;
         }
       }
+      function validateGoalForm(event) {
+        let readyToSubmit = true
+        let inputValid = document.querySelectorAll("input");
+        console.log(inputValid);
+        if (inputValid) {
+          inputValid.forEach((userItem) => {
+            if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign" && userItem.id !== 'budget') {
+              console.log(userItem);
+              readyToSubmit = false;
+              return;
+            }
+          });
+          if (readyToSubmit) {
+            const params = {
+                spreadsheetId: SPREADSHEET_ID,
+                range: 'goal entries',
+              };
+              onSubmission(event, params);
+          }
+      }
 
       function validateForm(event) {
         let readyToSubmit = true
@@ -352,22 +372,11 @@
             }
           });
           if (readyToSubmit) {
-            console.log("what is here??");
-            console.log(formBoolean);
-            if (document.querySelector(".toggle").checked) {
-              const params = {
-                spreadsheetId: SPREADSHEET_ID,
-                range: 'goal entries',
-              };
-              onSubmission(event, params);
-            }
-            else {
               const params = {
                 spreadsheetId: SPREADSHEET_ID,
                 range: 'budget entries',
               };
               onSubmission(event, params);
-            }
           }
         }
       }
