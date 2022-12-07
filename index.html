@@ -389,6 +389,7 @@
         e.preventDefault();
         let formElement = document.getElementById("goalForm");
         const url = theForm.action;
+        console.log(formElement);
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
         // formDataObj.account = myFormData.getAll('account');
