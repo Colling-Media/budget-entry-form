@@ -420,7 +420,7 @@
         let entryNumber = formDataObj.sourceNames.length
 
         for (let i = 0; i < entryNumber; i++) {
-          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, startDateFormatted, endDateFormatted, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.primaryGoal[i], formDataObj.primaryGoalCount[i]]);
+          monsterArray.push([timestamp, formDataObj.email, formDataObj.account, startDateFormatted, endDateFormatted, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.budget[i].replace(/[^0-9\.-]+/g,""), "", "", formDataObj.notes[i]]);
         }
 
         const request = {
