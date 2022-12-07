@@ -389,7 +389,6 @@
         e.preventDefault();
         let formElement = document.getElementById("goal-form");
         const url = theForm.action;
-        console.log(formElement);
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
         // formDataObj.account = myFormData.getAll('account');
@@ -406,11 +405,11 @@
         const [y, m, da] = formDataObj.endDate.split('-');
         const endDateFormatted = [y, m, da].join('');
 
-        const formDataJsonString = JSON.stringify(formDataObj)
-        const valueRangeBody = {
-            'majorDimension': 'ROWS',
-            'values': [formDataJsonString]
-        }
+        // const formDataJsonString = JSON.stringify(formDataObj)
+        // const valueRangeBody = {
+        //     'majorDimension': 'ROWS',
+        //     'values': [formDataJsonString]
+        // }
 
         const d = new Date();
         let timestamp = d.toLocaleString();
@@ -439,6 +438,7 @@
         } catch (err) {
             alert("Form was unable to submit, please refresh your page and try again.");
             console.log(err);
+            return;
         }
         document.querySelector(".modal-dialog-confirmation").setAttribute('open', 'open');
         document.querySelector(".confirmation-modale").style.visibility = 'visible';
