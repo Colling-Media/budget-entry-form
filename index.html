@@ -387,7 +387,7 @@
 
       async function onGoalSubmission(e) {
         e.preventDefault();
-        let formElement = document.getElementById("theForm");
+        let formElement = document.getElementById("goalForm");
         const url = theForm.action;
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
