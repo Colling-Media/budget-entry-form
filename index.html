@@ -345,11 +345,11 @@
         let readyToSubmit = true
         let inputValid1 = document.querySelectorAll(".inpt");
         inputValid1.forEach((userItem) => {
-          console.log(userItem);
           if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign" && userItem.id !== "budget") {
               console.log(userItem);
               console.log(userItem.value)
               readyToSubmit = false;
+              return;
           }
         });
       }
