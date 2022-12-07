@@ -391,12 +391,13 @@
         const url = theForm.action;
         const myFormData = new FormData(formElement);
         const formDataObj = Object.fromEntries(myFormData.entries());
-        // formDataObj.account = myFormData.getAll('account');
         formDataObj['sourceNames'] = myFormData.getAll('sourceNames');
         formDataObj['mediaType'] = myFormData.getAll('mediaType');
         formDataObj.campaign = myFormData.getAll('campaign');
+        formDataObj.budget = myFormData.getAll('budget');
         formDataObj['primaryGoal'] = myFormData.getAll('primaryGoal');
         formDataObj['primaryGoalCount'] = myFormData.getAll('primaryGoalCount');
+        formDataObj.notes = myFormData.getAll('notes');
 
         //for time conversion mm/dd/yyyy
         const [year, month, day] = formDataObj.startDate.split('-');
