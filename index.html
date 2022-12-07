@@ -346,12 +346,15 @@
         let inputValid1 = document.querySelectorAll(".inpt");
         inputValid1.forEach((userItem) => {
           if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign" && userItem.id !== "budget") {
-              console.log(userItem);
-              console.log(userItem.value)
-              readyToSubmit = false;
-              return;
+                console.log(userItem);
+                console.log(userItem.value)
+                readyToSubmit = false;
+                return;
+            }
+          });
+          if (readyToSubmit) {
+            onGoalSubmission(event);
           }
-        });
       }
       
       function validateForm(event) {
@@ -380,6 +383,64 @@
             onSubmission(event, params, r);
           }
         }
+      }
+
+      async function onGoalSubmission(e) {
+        e.preventDefault();
+        let formElement = document.getElementById("theForm");
+        const url = theForm.action;
+        const myFormData = new FormData(formElement);
+        const formDataObj = Object.fromEntries(myFormData.entries());
+        // formDataObj.account = myFormData.getAll('account');
+        formDataObj['sourceNames'] = myFormData.getAll('sourceNames');
+        formDataObj['mediaType'] = myFormData.getAll('mediaType');
+        formDataObj.campaign = myFormData.getAll('campaign');
+        formDataObj['primaryGoal'] = myFormData.getAll('primaryGoal');
+        formDataObj['primaryGoalCount'] = myFormData.getAll('primaryGoalCount');
+
+        //for time conversion mm/dd/yyyy
+        const [year, month, day] = formDataObj.startDate.split('-');
+        const startDateFormatted = [year, month, day].join('');
+
+        const [y, m, da] = formDataObj.endDate.split('-');
+        const endDateFormatted = [y, m, da].join('');
+
+        const formDataJsonString = JSON.stringify(formDataObj)
+        const valueRangeBody = {
+            'majorDimension': 'ROWS',
+            'values': [formDataJsonString]
+        }
+
+        const d = new Date();
+        let timestamp = d.toLocaleString();
+
+        let monsterArray = [];
+
+        let entryNumber = formDataObj.sourceNames.length
+
+        for (let i = 0; i < entryNumber; i++) {
+          monsterArray.push(timestamp, [formDataObj.email, formDataObj.account, startDateFormatted, endDateFormatted, formDataObj.sourceNames[i], formDataObj.mediaType[i], formDataObj.campaign[i], formDataObj.primaryGoal[i], formDataObj.primaryGoalCount[i]]);
+        }
+
+        const request = {
+          spreadsheetId: SPREADSHEET_ID,
+          range: 'goal entries',
+          valueInputOption: 'USER_ENTERED',
+          insertDataOption: 'INSERT_ROWS',
+          resource: {
+            "majorDimension": "ROWS",
+            "values": monsterArray
+          }
+        }
+        
+        try {
+            const response = (await gapi.client.sheets.spreadsheets.values.append(request)).data;
+        } catch (err) {
+            alert("Form was unable to submit, please refresh your page and try again.");
+            console.log(err);
+        }
+        document.querySelector(".modal-dialog-confirmation").setAttribute('open', 'open');
+        document.querySelector(".confirmation-modale").style.visibility = 'visible';
       }
 
 
