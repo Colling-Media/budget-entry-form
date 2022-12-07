@@ -343,8 +343,8 @@
       function validateGoalForm(event) {
         console.log("went to validate goal form");
         let readyToSubmit = true
-        let inputValid = document.querySelectorAll("input");
-        inputValid.forEach((userItem) => {
+        let inputValid1 = document.querySelectorAll(".input");
+        inputValid1.forEach((userItem) => {
           if (userItem.validity.valueMissing === true || userItem.validity.typeMismatch === true || userItem.validity.patternMismatch === true && userItem.id !== "campaign" && userItem.id !== "budget") {
               console.log(userItem);
               console.log(userItem.value)
